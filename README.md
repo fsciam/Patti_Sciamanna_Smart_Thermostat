@@ -1,1 +1,2 @@
-# Patti_Sciamanna_Smart_Thermostat
+# Smart Thermostat
+This work is a project inside the coure "Internet of things" at Politecnico of Milano.
