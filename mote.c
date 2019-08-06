@@ -35,10 +35,9 @@ temperature_periodic_handler(resource_t *r)
 {
   temperature--;
   char message[100];
-  sprintf(message,(int)sizeof(message),"{\"room\":\"room1\"; \"temperature\":\"%d\"}",temperature);
   coap_packet_t notification[1]; /* This way the packet can be treated as pointer as usual. */
   coap_init_message(notification, COAP_TYPE_NON, REST.status.OK, 0 );
-  coap_set_payload(notification, message, sizeof(message));
+  coap_set_payload(notification, message, sprintf(message,(int)sizeof(message),"{\"room\":\"room1\"; \"temperature\":\"%d\"}",temperature));
   REST.notify_subscribers(r, 0, notification);
 
 }
