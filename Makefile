@@ -14,7 +14,7 @@ UIP_CONF_IPV6=1
 # IPv6 make config disappeared completely
 CFLAGS += -DUIP_CONF_IPV6=1
 
-CONTIKI=../..
+CONTIKI=/home/user/contiki-2.7
 CFLAGS += -DPROJECT_CONF_H=\"project-conf.h\"
 
 # variable for Makefile.include
