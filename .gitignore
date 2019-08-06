@@ -1,4 +1,5 @@
-Report/*.txt
-Report/*.aux
-Report/*.gz
-Report/*.toc
+Source/obj_sky
+Source/contiki-sky.a
+Source/*.map
+Source/*.sky
+Source/symbols.*
