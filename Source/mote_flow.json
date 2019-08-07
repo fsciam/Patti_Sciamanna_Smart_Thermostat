@@ -1,0 +1,1060 @@
+[
+    {
+        "id": "c5ca7673.53de8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "1a91014a.55cde7",
+        "type": "coap request",
+        "z": "c5ca7673.53de8",
+        "method": "GET",
+        "observe": true,
+        "url": "coap://[aaaa::212:7402:2:202]:5683/sensors/temp",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Temp Request",
+        "x": 420,
+        "y": 100,
+        "wires": [
+            [
+                "98fc5a8e.a7c5e8"
+            ]
+        ]
+    },
+    {
+        "id": "1d6eee6d.d65d0a",
+        "type": "inject",
+        "z": "c5ca7673.53de8",
+        "name": "Observe inject",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "1a91014a.55cde7"
+            ]
+        ]
+    },
+    {
+        "id": "1c05a6.102a525b",
+        "type": "coap request",
+        "z": "c5ca7673.53de8",
+        "method": "GET",
+        "observe": false,
+        "url": "coap://[aaaa::212:7402:2:202]:5683/actuators/heating",
+        "content-format": "application/json",
+        "raw-buffer": false,
+        "name": "Options GET",
+        "x": 450,
+        "y": 480,
+        "wires": [
+            [
+                "d36d3fc5.72ad8"
+            ]
+        ]
+    },
+    {
+        "id": "98fc5a8e.a7c5e8",
+        "type": "ui_gauge",
+        "z": "c5ca7673.53de8",
+        "name": "",
+        "group": "66fd740c.ff3614",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Room 1",
+        "label": "",
+        "format": "{{value}}°C",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#0917ff",
+            "#00ff0e",
+            "#ff0000"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "x": 820,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "463a7016.27fe5",
+        "type": "ui_button",
+        "z": "c5ca7673.53de8",
+        "name": "Air conditioner",
+        "group": "66fd740c.ff3614",
+        "order": 2,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Air conditioner",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=0",
+        "payloadType": "str",
+        "topic": "",
+        "x": 160,
+        "y": 280,
+        "wires": [
+            [
+                "58c5d42.39bf32c"
+            ]
+        ]
+    },
+    {
+        "id": "b642bb27.20d928",
+        "type": "ui_button",
+        "z": "c5ca7673.53de8",
+        "name": "Heating",
+        "group": "66fd740c.ff3614",
+        "order": 3,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Heating",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=1",
+        "payloadType": "str",
+        "topic": "",
+        "x": 140,
+        "y": 340,
+        "wires": [
+            [
+                "58c5d42.39bf32c"
+            ]
+        ]
+    },
+    {
+        "id": "bacc488b.bdac6",
+        "type": "ui_button",
+        "z": "c5ca7673.53de8",
+        "name": "Ventilation",
+        "group": "66fd740c.ff3614",
+        "order": 4,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Ventilation",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=2",
+        "payloadType": "str",
+        "topic": "",
+        "x": 150,
+        "y": 400,
+        "wires": [
+            [
+                "58c5d42.39bf32c"
+            ]
+        ]
+    },
+    {
+        "id": "ade1e4a.8ffee18",
+        "type": "ui_button",
+        "z": "c5ca7673.53de8",
+        "name": "",
+        "group": "66fd740c.ff3614",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Room status",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 150,
+        "y": 480,
+        "wires": [
+            [
+                "1c05a6.102a525b"
+            ]
+        ]
+    },
+    {
+        "id": "d36d3fc5.72ad8",
+        "type": "function",
+        "z": "c5ca7673.53de8",
+        "name": "",
+        "func": "var obj=msg.payload;\nvar conditioning=obj.air_conditioning;\nvar heating=obj.heating_unit;\nvar ventilation=obj.ventilation_unit;\nmsg.payload=\"Air conditioner: \";\nif(conditioning)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\nmsg.payload=msg.payload+\"Heating: \";\nif(heating)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\nmsg.payload=msg.payload+\"Ventilation: \";\nif(ventilation)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 710,
+        "y": 480,
+        "wires": [
+            [
+                "cf297bf7.fdf6d"
+            ]
+        ]
+    },
+    {
+        "id": "cf297bf7.fdf6d",
+        "type": "ui_toast",
+        "z": "c5ca7673.53de8",
+        "position": "dialog",
+        "displayTime": "4",
+        "highlight": "",
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 1 status",
+        "name": "Status",
+        "x": 870,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "58c5d42.39bf32c",
+        "type": "coap request",
+        "z": "c5ca7673.53de8",
+        "method": "POST",
+        "observe": false,
+        "url": "coap://[aaaa::212:7402:2:202]:5683/actuators/heating",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Options POST",
+        "x": 460,
+        "y": 340,
+        "wires": [
+            [
+                "210b0c37.addae4"
+            ]
+        ]
+    },
+    {
+        "id": "210b0c37.addae4",
+        "type": "ui_toast",
+        "z": "c5ca7673.53de8",
+        "position": "top right",
+        "displayTime": "2",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 1",
+        "name": "Action notification",
+        "x": 730,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "9bb474da.1c76f",
+        "type": "coap request",
+        "z": "c5ca7673.53de8",
+        "method": "GET",
+        "observe": true,
+        "url": "coap://[aaaa::212:7403:3:303]:5683/sensors/temp",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Temp Request",
+        "x": 500,
+        "y": 640,
+        "wires": [
+            [
+                "7f4c04f0.67763c"
+            ]
+        ]
+    },
+    {
+        "id": "b76bf090.0bc65",
+        "type": "inject",
+        "z": "c5ca7673.53de8",
+        "name": "Observe inject",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 240,
+        "y": 660,
+        "wires": [
+            [
+                "9bb474da.1c76f"
+            ]
+        ]
+    },
+    {
+        "id": "cd2b2181.77b7c8",
+        "type": "coap request",
+        "z": "c5ca7673.53de8",
+        "method": "GET",
+        "observe": false,
+        "url": "coap://[aaaa::212:7403:3:303]:5683/actuators/heating",
+        "content-format": "application/json",
+        "raw-buffer": false,
+        "name": "Options GET",
+        "x": 530,
+        "y": 1020,
+        "wires": [
+            [
+                "f956821c.be2e48"
+            ]
+        ]
+    },
+    {
+        "id": "339883e6.23015c",
+        "type": "ui_button",
+        "z": "c5ca7673.53de8",
+        "name": "Air conditioner",
+        "group": "fb8828aa.8b31b",
+        "order": 2,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Air conditioner",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=0",
+        "payloadType": "str",
+        "topic": "",
+        "x": 240,
+        "y": 820,
+        "wires": [
+            [
+                "6367776a.dfe69"
+            ]
+        ]
+    },
+    {
+        "id": "9b7af36e.288df8",
+        "type": "ui_button",
+        "z": "c5ca7673.53de8",
+        "name": "Heating",
+        "group": "fb8828aa.8b31b",
+        "order": 3,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Heating",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=1",
+        "payloadType": "str",
+        "topic": "",
+        "x": 220,
+        "y": 880,
+        "wires": [
+            [
+                "6367776a.dfe69"
+            ]
+        ]
+    },
+    {
+        "id": "159670ad.a7649f",
+        "type": "ui_button",
+        "z": "c5ca7673.53de8",
+        "name": "Ventilation",
+        "group": "fb8828aa.8b31b",
+        "order": 4,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Ventilation",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=2",
+        "payloadType": "str",
+        "topic": "",
+        "x": 230,
+        "y": 940,
+        "wires": [
+            [
+                "6367776a.dfe69"
+            ]
+        ]
+    },
+    {
+        "id": "223a1025.ee6438",
+        "type": "ui_button",
+        "z": "c5ca7673.53de8",
+        "name": "",
+        "group": "fb8828aa.8b31b",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Room status",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 230,
+        "y": 1020,
+        "wires": [
+            [
+                "cd2b2181.77b7c8"
+            ]
+        ]
+    },
+    {
+        "id": "f956821c.be2e48",
+        "type": "function",
+        "z": "c5ca7673.53de8",
+        "name": "",
+        "func": "var obj=msg.payload;\nvar conditioning=obj.air_conditioning;\nvar heating=obj.heating_unit;\nvar ventilation=obj.ventilation_unit;\nmsg.payload=\"Air conditioner: \";\nif(conditioning)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\nmsg.payload=msg.payload+\"Heating: \";\nif(heating)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\nmsg.payload=msg.payload+\"Ventilation: \";\nif(ventilation)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 790,
+        "y": 1020,
+        "wires": [
+            [
+                "32dcaed.25e2a52"
+            ]
+        ]
+    },
+    {
+        "id": "32dcaed.25e2a52",
+        "type": "ui_toast",
+        "z": "c5ca7673.53de8",
+        "position": "dialog",
+        "displayTime": "4",
+        "highlight": "",
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 2 status",
+        "name": "Status",
+        "x": 950,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6367776a.dfe69",
+        "type": "coap request",
+        "z": "c5ca7673.53de8",
+        "method": "POST",
+        "observe": false,
+        "url": "coap://[aaaa::212:7403:3:303]:5683/actuators/heating",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Options POST",
+        "x": 540,
+        "y": 880,
+        "wires": [
+            [
+                "35a59c34.df4c54"
+            ]
+        ]
+    },
+    {
+        "id": "35a59c34.df4c54",
+        "type": "ui_toast",
+        "z": "c5ca7673.53de8",
+        "position": "top right",
+        "displayTime": "2",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 2",
+        "name": "Action notification",
+        "x": 810,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "a0859893.7fa93",
+        "type": "coap request",
+        "z": "c5ca7673.53de8",
+        "method": "GET",
+        "observe": true,
+        "url": "coap://[aaaa::212:7404:4:404]:5683/sensors/temp",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Temp Request",
+        "x": 520,
+        "y": 1180,
+        "wires": [
+            [
+                "fd0dfd0a.fc1ed8"
+            ]
+        ]
+    },
+    {
+        "id": "bf0d2e0f.5384b8",
+        "type": "inject",
+        "z": "c5ca7673.53de8",
+        "name": "Observe inject",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 260,
+        "y": 1200,
+        "wires": [
+            [
+                "a0859893.7fa93"
+            ]
+        ]
+    },
+    {
+        "id": "c8919e44.c97778",
+        "type": "coap request",
+        "z": "c5ca7673.53de8",
+        "method": "GET",
+        "observe": false,
+        "url": "coap://[aaaa::212:7404:4:404]:5683/actuators/heating",
+        "content-format": "application/json",
+        "raw-buffer": false,
+        "name": "Options GET",
+        "x": 550,
+        "y": 1560,
+        "wires": [
+            [
+                "40ecf1bd.5a1ae"
+            ]
+        ]
+    },
+    {
+        "id": "3af6d74f.34c33",
+        "type": "ui_button",
+        "z": "c5ca7673.53de8",
+        "name": "Air conditioner",
+        "group": "6dd5a4a6.35df5c",
+        "order": 2,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Air conditioner",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=0",
+        "payloadType": "str",
+        "topic": "",
+        "x": 260,
+        "y": 1360,
+        "wires": [
+            [
+                "540c3aef.246acc"
+            ]
+        ]
+    },
+    {
+        "id": "10503ce3.f3fe7b",
+        "type": "ui_button",
+        "z": "c5ca7673.53de8",
+        "name": "Heating",
+        "group": "6dd5a4a6.35df5c",
+        "order": 3,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Heating",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=1",
+        "payloadType": "str",
+        "topic": "",
+        "x": 240,
+        "y": 1420,
+        "wires": [
+            [
+                "540c3aef.246acc"
+            ]
+        ]
+    },
+    {
+        "id": "185fedb9.78d0ca",
+        "type": "ui_button",
+        "z": "c5ca7673.53de8",
+        "name": "Ventilation",
+        "group": "6dd5a4a6.35df5c",
+        "order": 4,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Ventilation",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=2",
+        "payloadType": "str",
+        "topic": "",
+        "x": 250,
+        "y": 1480,
+        "wires": [
+            [
+                "540c3aef.246acc"
+            ]
+        ]
+    },
+    {
+        "id": "29bb037f.302f54",
+        "type": "ui_button",
+        "z": "c5ca7673.53de8",
+        "name": "",
+        "group": "6dd5a4a6.35df5c",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Room status",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 250,
+        "y": 1560,
+        "wires": [
+            [
+                "c8919e44.c97778"
+            ]
+        ]
+    },
+    {
+        "id": "40ecf1bd.5a1ae",
+        "type": "function",
+        "z": "c5ca7673.53de8",
+        "name": "",
+        "func": "var obj=msg.payload;\nvar conditioning=obj.air_conditioning;\nvar heating=obj.heating_unit;\nvar ventilation=obj.ventilation_unit;\nmsg.payload=\"Air conditioner: \";\nif(conditioning)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\nmsg.payload=msg.payload+\"Heating: \";\nif(heating)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\nmsg.payload=msg.payload+\"Ventilation: \";\nif(ventilation)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 810,
+        "y": 1560,
+        "wires": [
+            [
+                "fc6c9de9.fed5f8"
+            ]
+        ]
+    },
+    {
+        "id": "fc6c9de9.fed5f8",
+        "type": "ui_toast",
+        "z": "c5ca7673.53de8",
+        "position": "dialog",
+        "displayTime": "4",
+        "highlight": "",
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 3 status",
+        "name": "Status",
+        "x": 970,
+        "y": 1560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "540c3aef.246acc",
+        "type": "coap request",
+        "z": "c5ca7673.53de8",
+        "method": "POST",
+        "observe": false,
+        "url": "coap://[aaaa::212:7404:4:404]:5683/actuators/heating",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Options POST",
+        "x": 560,
+        "y": 1420,
+        "wires": [
+            [
+                "9fd02230.1c23b"
+            ]
+        ]
+    },
+    {
+        "id": "9fd02230.1c23b",
+        "type": "ui_toast",
+        "z": "c5ca7673.53de8",
+        "position": "top right",
+        "displayTime": "2",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 3",
+        "name": "Action notification",
+        "x": 830,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "7f4c04f0.67763c",
+        "type": "ui_gauge",
+        "z": "c5ca7673.53de8",
+        "name": "",
+        "group": "fb8828aa.8b31b",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Room 2",
+        "label": "",
+        "format": "{{value}}°C",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#0917ff",
+            "#00ff0e",
+            "#ff0000"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "x": 840,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "fd0dfd0a.fc1ed8",
+        "type": "ui_gauge",
+        "z": "c5ca7673.53de8",
+        "name": "",
+        "group": "6dd5a4a6.35df5c",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Room 3",
+        "label": "",
+        "format": "{{value}}°C",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#0917ff",
+            "#00ff0e",
+            "#ff0000"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "x": 880,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "32a62066.7bd488",
+        "type": "coap request",
+        "z": "c5ca7673.53de8",
+        "method": "GET",
+        "observe": false,
+        "url": "coap://[aaaa::212:7405:5:505]:5683/actuators/heating",
+        "content-format": "application/json",
+        "raw-buffer": false,
+        "name": "Options GET",
+        "x": 550,
+        "y": 1960,
+        "wires": [
+            [
+                "44c751f3.a59c3"
+            ]
+        ]
+    },
+    {
+        "id": "5181888c.ee647",
+        "type": "ui_button",
+        "z": "c5ca7673.53de8",
+        "name": "Air conditioner",
+        "group": "9e528f26.5c73a8",
+        "order": 2,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Air conditioner",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=0",
+        "payloadType": "str",
+        "topic": "",
+        "x": 260,
+        "y": 1760,
+        "wires": [
+            [
+                "e15e970d.0e0d2"
+            ]
+        ]
+    },
+    {
+        "id": "eab6ddbf.267b28",
+        "type": "ui_button",
+        "z": "c5ca7673.53de8",
+        "name": "Heating",
+        "group": "9e528f26.5c73a8",
+        "order": 3,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Heating",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=1",
+        "payloadType": "str",
+        "topic": "",
+        "x": 240,
+        "y": 1820,
+        "wires": [
+            [
+                "e15e970d.0e0d2"
+            ]
+        ]
+    },
+    {
+        "id": "347788ee.00511",
+        "type": "ui_button",
+        "z": "c5ca7673.53de8",
+        "name": "Ventilation",
+        "group": "9e528f26.5c73a8",
+        "order": 4,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Ventilation",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=2",
+        "payloadType": "str",
+        "topic": "",
+        "x": 250,
+        "y": 1880,
+        "wires": [
+            [
+                "e15e970d.0e0d2"
+            ]
+        ]
+    },
+    {
+        "id": "24c74e2d.dea28a",
+        "type": "ui_button",
+        "z": "c5ca7673.53de8",
+        "name": "",
+        "group": "9e528f26.5c73a8",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Room status",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 250,
+        "y": 1960,
+        "wires": [
+            [
+                "32a62066.7bd488"
+            ]
+        ]
+    },
+    {
+        "id": "44c751f3.a59c3",
+        "type": "function",
+        "z": "c5ca7673.53de8",
+        "name": "",
+        "func": "var obj=msg.payload;\nvar conditioning=obj.air_conditioning;\nvar heating=obj.heating_unit;\nvar ventilation=obj.ventilation_unit;\nmsg.payload=\"Air conditioner: \";\nif(conditioning)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\nmsg.payload=msg.payload+\"Heating: \";\nif(heating)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\nmsg.payload=msg.payload+\"Ventilation: \";\nif(ventilation)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 810,
+        "y": 1960,
+        "wires": [
+            [
+                "72842e45.f5eae8"
+            ]
+        ]
+    },
+    {
+        "id": "72842e45.f5eae8",
+        "type": "ui_toast",
+        "z": "c5ca7673.53de8",
+        "position": "dialog",
+        "displayTime": "4",
+        "highlight": "",
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 3 status",
+        "name": "Status",
+        "x": 970,
+        "y": 1960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e15e970d.0e0d2",
+        "type": "coap request",
+        "z": "c5ca7673.53de8",
+        "method": "POST",
+        "observe": false,
+        "url": "coap://[aaaa::212:7405:5:505]:5683/actuators/heating",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Options POST",
+        "x": 560,
+        "y": 1820,
+        "wires": [
+            [
+                "e4dfed65.4a22f"
+            ]
+        ]
+    },
+    {
+        "id": "e4dfed65.4a22f",
+        "type": "ui_toast",
+        "z": "c5ca7673.53de8",
+        "position": "top right",
+        "displayTime": "2",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 3",
+        "name": "Action notification",
+        "x": 830,
+        "y": 1820,
+        "wires": []
+    },
+    {
+        "id": "263cfbf5.68a8ec",
+        "type": "coap request",
+        "z": "c5ca7673.53de8",
+        "method": "GET",
+        "observe": true,
+        "url": "coap://[aaaa::212:7405:5:505]:5683/sensors/temp",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Temp Request",
+        "x": 540,
+        "y": 1660,
+        "wires": [
+            [
+                "56c9901.17c6cf"
+            ]
+        ]
+    },
+    {
+        "id": "4b12200a.0a2a48",
+        "type": "inject",
+        "z": "c5ca7673.53de8",
+        "name": "Observe inject",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 280,
+        "y": 1680,
+        "wires": [
+            [
+                "263cfbf5.68a8ec"
+            ]
+        ]
+    },
+    {
+        "id": "56c9901.17c6cf",
+        "type": "ui_gauge",
+        "z": "c5ca7673.53de8",
+        "name": "",
+        "group": "9e528f26.5c73a8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Room 4",
+        "label": "",
+        "format": "{{value}}°C",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#0917ff",
+            "#00ff0e",
+            "#ff0000"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "x": 900,
+        "y": 1660,
+        "wires": []
+    },
+    {
+        "id": "66fd740c.ff3614",
+        "type": "ui_group",
+        "z": "",
+        "name": "Mote1",
+        "tab": "bd1fb400.b6648",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "fb8828aa.8b31b",
+        "type": "ui_group",
+        "z": "",
+        "name": "Mote 2",
+        "tab": "bd1fb400.b6648",
+        "order": null,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "6dd5a4a6.35df5c",
+        "type": "ui_group",
+        "z": "",
+        "name": "Mote 3",
+        "tab": "bd1fb400.b6648",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "9e528f26.5c73a8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Mote 4",
+        "tab": "bd1fb400.b6648",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "bd1fb400.b6648",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 4
+    }
+]

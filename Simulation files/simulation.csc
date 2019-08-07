@@ -103,6 +103,60 @@
       </interface_config>
       <motetype_identifier>sky2</motetype_identifier>
     </mote>
+    <mote>
+      <breakpoints />
+      <interface_config>
+        org.contikios.cooja.interfaces.Position
+        <x>116.7997354705821</x>
+        <y>115.52510228620328</y>
+        <z>0.0</z>
+      </interface_config>
+      <interface_config>
+        org.contikios.cooja.mspmote.interfaces.MspClock
+        <deviation>1.0</deviation>
+      </interface_config>
+      <interface_config>
+        org.contikios.cooja.mspmote.interfaces.MspMoteID
+        <id>3</id>
+      </interface_config>
+      <motetype_identifier>sky2</motetype_identifier>
+    </mote>
+    <mote>
+      <breakpoints />
+      <interface_config>
+        org.contikios.cooja.interfaces.Position
+        <x>96.54081101872038</x>
+        <y>62.74715652859361</y>
+        <z>0.0</z>
+      </interface_config>
+      <interface_config>
+        org.contikios.cooja.mspmote.interfaces.MspClock
+        <deviation>1.0</deviation>
+      </interface_config>
+      <interface_config>
+        org.contikios.cooja.mspmote.interfaces.MspMoteID
+        <id>4</id>
+      </interface_config>
+      <motetype_identifier>sky2</motetype_identifier>
+    </mote>
+    <mote>
+      <breakpoints />
+      <interface_config>
+        org.contikios.cooja.interfaces.Position
+        <x>63.97936576806292</x>
+        <y>140.68916524922793</y>
+        <z>0.0</z>
+      </interface_config>
+      <interface_config>
+        org.contikios.cooja.mspmote.interfaces.MspClock
+        <deviation>1.0</deviation>
+      </interface_config>
+      <interface_config>
+        org.contikios.cooja.mspmote.interfaces.MspMoteID
+        <id>5</id>
+      </interface_config>
+      <motetype_identifier>sky2</motetype_identifier>
+    </mote>
   </simulation>
   <plugin>
     org.contikios.cooja.plugins.SimControl
@@ -120,10 +174,10 @@
       <skin>org.contikios.cooja.plugins.skins.GridVisualizerSkin</skin>
       <skin>org.contikios.cooja.plugins.skins.TrafficVisualizerSkin</skin>
       <skin>org.contikios.cooja.plugins.skins.UDGMVisualizerSkin</skin>
-      <viewport>0.9356138172839357 0.0 0.0 0.9356138172839357 186.74071183431954 161.39706217721334</viewport>
+      <viewport>0.7977182450902891 0.0 0.0 0.7977182450902891 254.5783461611842 193.39173715997575</viewport>
     </plugin_config>
     <width>400</width>
-    <z>1</z>
+    <z>2</z>
     <height>400</height>
     <location_x>1</location_x>
     <location_y>1</location_y>
@@ -136,8 +190,8 @@
       <coloring />
     </plugin_config>
     <width>1320</width>
-    <z>3</z>
-    <height>240</height>
+    <z>5</z>
+    <height>238</height>
     <location_x>400</location_x>
     <location_y>160</location_y>
   </plugin>
@@ -146,13 +200,16 @@
     <plugin_config>
       <mote>0</mote>
       <mote>1</mote>
+      <mote>2</mote>
+      <mote>3</mote>
+      <mote>4</mote>
       <showRadioRXTX />
       <showRadioHW />
       <showLEDs />
       <zoomfactor>500.0</zoomfactor>
     </plugin_config>
     <width>1720</width>
-    <z>6</z>
+    <z>9</z>
     <height>166</height>
     <location_x>0</location_x>
     <location_y>778</location_y>
@@ -164,7 +221,7 @@
       <decorations>true</decorations>
     </plugin_config>
     <width>1040</width>
-    <z>5</z>
+    <z>8</z>
     <height>160</height>
     <location_x>680</location_x>
     <location_y>0</location_y>
@@ -177,7 +234,7 @@
       <bound>true</bound>
     </plugin_config>
     <width>362</width>
-    <z>2</z>
+    <z>6</z>
     <height>116</height>
     <location_x>710</location_x>
     <location_y>30</location_y>
@@ -190,10 +247,49 @@
       <scrollpos>0,0</scrollpos>
     </plugin_config>
     <width>350</width>
-    <z>4</z>
+    <z>7</z>
     <height>300</height>
     <location_x>22</location_x>
     <location_y>434</location_y>
+  </plugin>
+  <plugin>
+    org.contikios.cooja.plugins.MoteInterfaceViewer
+    <mote_arg>2</mote_arg>
+    <plugin_config>
+      <interface>Sky LED</interface>
+      <scrollpos>0,0</scrollpos>
+    </plugin_config>
+    <width>350</width>
+    <z>4</z>
+    <height>300</height>
+    <location_x>405</location_x>
+    <location_y>433</location_y>
+  </plugin>
+  <plugin>
+    org.contikios.cooja.plugins.MoteInterfaceViewer
+    <mote_arg>3</mote_arg>
+    <plugin_config>
+      <interface>Sky LED</interface>
+      <scrollpos>0,0</scrollpos>
+    </plugin_config>
+    <width>350</width>
+    <z>3</z>
+    <height>300</height>
+    <location_x>791</location_x>
+    <location_y>432</location_y>
+  </plugin>
+  <plugin>
+    org.contikios.cooja.plugins.MoteInterfaceViewer
+    <mote_arg>4</mote_arg>
+    <plugin_config>
+      <interface>Sky LED</interface>
+      <scrollpos>0,0</scrollpos>
+    </plugin_config>
+    <width>350</width>
+    <z>1</z>
+    <height>300</height>
+    <location_x>1188</location_x>
+    <location_y>432</location_y>
   </plugin>
 </simconf>
 

@@ -43,76 +43,108 @@ heating_opt_handler(void* request, void* response, uint8_t *buffer, uint16_t pre
 			const char *msg = "Supporting content-types application/json";
 			REST.set_response_payload(response, msg, strlen(msg));
 		}
-	}
-	else
-	{
-		
-		const char *opt = NULL;
-	 	size_t len = REST.get_post_variable(request, "opt", &opt);
-		int success=0;
-		
-		if (len) {
-		  
-		  int option_selected=atoi(opt);
-		  
-		  
-		  if(option_selected == 0 && !heating_unit)
-		  {
-		  		air_conditioning=air_conditioning? 0 : 1;
-		  		success=1;
+}
+else
+{
+	
+	const char *opt = NULL;
+ 	size_t len = REST.get_post_variable(request, "opt", &opt);
+	int success=0;
+	int option_selected=atoi(opt);
+	
+	
+	printf("Received request for option: %d",option_selected);
+	char msg_buffer[100];
+	
+	
+	if (len) {
+	  
+	  
+	  
+	  
+	  if(option_selected == 0)
+	  {
+	  		if(!heating_unit)
+	  		{
+					air_conditioning=air_conditioning? 0 : 1;
+					printf("Air conditioning: %d",air_conditioning);
+					const char *msg=air_conditioning?"Air conditioner powered on":"Air conditioner powered off";
+					strcpy(msg_buffer,msg);
+					success=1;
+				}
+				else
+				{
+					const char *msg="Cannot power on air conditioner if heater is on";
+					strcpy(msg_buffer,msg);
+				}
 
-		  }
-		  else if(option_selected == 1 && !air_conditioning)
-		  {
-		  	
-		  		heating_unit=heating_unit? 0 : 1;
-		  		success=1;
-		  	
-		  }
-		  else if(option_selected == 2)
-		  {
-		  		ventilation_unit=ventilation_unit? 0: 1;
-		  		success=1;
-		  }
-    }
-    
-    if(success) 
+	  }
+	  else if(option_selected == 1)
+	  {
+	  	
+	  		if(!air_conditioning)
+	  		{
+					heating_unit=heating_unit? 0 : 1;
+					printf("Heating unit: %d",heating_unit);
+					const char *msg=heating_unit? "Heater powered on" : "Heater powered off";
+					strcpy(msg_buffer,msg);
+					success=1;
+				}
+				else
+				{
+						const char *msg="Cannot power on heater if air conditioner is on";
+	  				strcpy(msg_buffer,msg);
+	  		}
+	  }
+	  else if(option_selected == 2)
+	  {
+	  		ventilation_unit=ventilation_unit? 0: 1;
+	  		printf("Ventilation unit: %d",ventilation_unit);
+	  		const char *msg=ventilation_unit? "Ventilator powered on" : "Ventilator powered off";
+	  		strcpy(msg_buffer,msg);
+	  		success=1;
+	  }
+	  
+}
+	
+if(success) 
+	{
+		REST.set_response_status(response, REST.status.OK);
+			
+		if(air_conditioning)
 		{
-			REST.set_response_status(response, REST.status.OK);
-			
-			if(air_conditioning)
-			{
-				leds_on(LEDS_BLUE);
-			}
-			else
-			{
-				leds_off(LEDS_BLUE);
-			}
-			if(heating_unit)
-			{
-				leds_on(LEDS_RED);
-			}
-			else
-			{
-				leds_off(LEDS_RED);
-			}
-			
-			if(ventilation_unit)
-			{
-				leds_on(LEDS_GREEN);
-			}
-			else
-			{
-				leds_off(LEDS_GREEN);
-			}
-			
-			
+			leds_on(LEDS_BLUE);
 		}
 		else
 		{
-			REST.set_response_status(response, REST.status.BAD_REQUEST);
+			leds_off(LEDS_BLUE);
 		}
-    
+		if(heating_unit)
+		{
+			leds_on(LEDS_RED);
+		}
+		else
+		{
+			leds_off(LEDS_RED);
+		}
+		
+		if(ventilation_unit)
+		{
+			leds_on(LEDS_GREEN);
+		}
+		else
+		{
+			leds_off(LEDS_GREEN);
+		}
+		
+		
+	}
+	else
+	{
+		REST.set_response_status(response, REST.status.BAD_REQUEST);
+	}
+	REST.set_response_payload(response, msg_buffer, strlen(msg_buffer));
+		
 	}
 }
 
@@ -191,11 +223,11 @@ PROCESS_THREAD(thermostat, ev, data)
 			if(etimer_expired(&et))
 			{
 				
-				if(air_conditioning)
+				if(air_conditioning && temperature>0)
 				{
 					temperature-=ventilation_unit? 2 : 1;
 				}
-				else if(heating_unit)
+				else if(heating_unit && temperature<50)
 				{
 					temperature+=ventilation_unit? 2 : 1;
 				}
