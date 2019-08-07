@@ -132,13 +132,14 @@ temperature_handler(void* request, void* response, uint8_t *buffer, uint16_t pre
 void
 temperature_periodic_handler(resource_t *r)
 {
-  
+  static int order=0;
   char message[100];
+  order++;
   coap_packet_t notification[1]; 
   coap_init_message(notification, COAP_TYPE_NON, REST.status.OK, 0 );
   //coap_set_header_content_type(notification,APPLICATION_JSON);
   coap_set_payload(notification, message, snprintf(message,(int)sizeof(message),"%d",temperature));
-  REST.notify_subscribers(r, 0, notification);
+  REST.notify_subscribers(r, order, notification);
 
 }
 /***************************************************************************************************************/
@@ -184,7 +185,6 @@ PROCESS_THREAD(thermostat, ev, data)
 
   /* Activate resources*/
   rest_activate_periodic_resource(&periodic_resource_temperature);
-  
   rest_activate_resource(&resource_heating_opt);
    while(1) {
 			PROCESS_WAIT_EVENT();
