@@ -1,0 +1,249 @@
+[
+    {
+        "id": "b5d1af96.0416f8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "cb745abf.1e2bf8",
+        "type": "coap request",
+        "z": "b5d1af96.0416f8",
+        "method": "GET",
+        "observe": false,
+        "url": "coap://[aaaa::212:7402:2:202]:5683/sensors/temp",
+        "content-format": "application/json",
+        "raw-buffer": false,
+        "name": "Temp Request",
+        "x": 420,
+        "y": 160,
+        "wires": [
+            [
+                "b1f93826.881b68",
+                "dc3d725d.702148"
+            ]
+        ]
+    },
+    {
+        "id": "b1f93826.881b68",
+        "type": "debug",
+        "z": "b5d1af96.0416f8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 690,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "227c8d61.706dda",
+        "type": "inject",
+        "z": "b5d1af96.0416f8",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 140,
+        "y": 160,
+        "wires": [
+            [
+                "cb745abf.1e2bf8"
+            ]
+        ]
+    },
+    {
+        "id": "d808fa90.985d1",
+        "type": "inject",
+        "z": "b5d1af96.0416f8",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 140,
+        "y": 260,
+        "wires": [
+            [
+                "43c63a8.5107344"
+            ]
+        ]
+    },
+    {
+        "id": "43c63a8.5107344",
+        "type": "coap request",
+        "z": "b5d1af96.0416f8",
+        "method": "GET",
+        "observe": false,
+        "url": "coap://[aaaa::212:7402:2:202]:5683/actuators/heating",
+        "content-format": "application/json",
+        "raw-buffer": false,
+        "name": "Options GET",
+        "x": 430,
+        "y": 260,
+        "wires": [
+            [
+                "c13f57ec.296a18"
+            ]
+        ]
+    },
+    {
+        "id": "c13f57ec.296a18",
+        "type": "debug",
+        "z": "b5d1af96.0416f8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 690,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "1be39307.0923dd",
+        "type": "inject",
+        "z": "b5d1af96.0416f8",
+        "name": "",
+        "topic": "",
+        "payload": "opt=0",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 130,
+        "y": 360,
+        "wires": [
+            [
+                "fbf672d9.57cc48"
+            ]
+        ]
+    },
+    {
+        "id": "fbf672d9.57cc48",
+        "type": "coap request",
+        "z": "b5d1af96.0416f8",
+        "method": "POST",
+        "observe": false,
+        "url": "coap://[aaaa::212:7402:2:202]:5683/actuators/heating",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Options POST",
+        "x": 440,
+        "y": 420,
+        "wires": [
+            [
+                "d7d2a2e7.0c6d98"
+            ]
+        ]
+    },
+    {
+        "id": "d7d2a2e7.0c6d98",
+        "type": "debug",
+        "z": "b5d1af96.0416f8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 850,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "1f84c04a.d3956",
+        "type": "inject",
+        "z": "b5d1af96.0416f8",
+        "name": "",
+        "topic": "",
+        "payload": "opt=1",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 130,
+        "y": 420,
+        "wires": [
+            [
+                "fbf672d9.57cc48"
+            ]
+        ]
+    },
+    {
+        "id": "c0354e1.d48733",
+        "type": "inject",
+        "z": "b5d1af96.0416f8",
+        "name": "",
+        "topic": "",
+        "payload": "opt=2",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 130,
+        "y": 480,
+        "wires": [
+            [
+                "fbf672d9.57cc48"
+            ]
+        ]
+    },
+    {
+        "id": "dc3d725d.702148",
+        "type": "ui_gauge",
+        "z": "b5d1af96.0416f8",
+        "name": "",
+        "group": "8c48261c.37e358",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 670,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "8c48261c.37e358",
+        "type": "ui_group",
+        "z": "",
+        "name": "Mote1",
+        "tab": "388861e7.9f48e6",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "388861e7.9f48e6",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard"
+    }
+]
