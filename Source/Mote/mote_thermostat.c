@@ -113,27 +113,33 @@ if(success)
 			
 		if(air_conditioning)
 		{
+			
 			leds_on(LEDS_BLUE);
 		}
 		else
 		{
+		
 			leds_off(LEDS_BLUE);
 		}
 		if(heating_unit)
 		{
+			
 			leds_on(LEDS_RED);
 		}
 		else
 		{
+			
 			leds_off(LEDS_RED);
 		}
 		
 		if(ventilation_unit)
 		{
+			
 			leds_on(LEDS_GREEN);
 		}
 		else
 		{
+		
 			leds_off(LEDS_GREEN);
 		}
 		
@@ -202,7 +208,6 @@ PROCESS_THREAD(thermostat, ev, data)
 	static struct etimer et;
 	
   PROCESS_BEGIN();
-  printf("Starting mote...");
   
   /*Initialize temperature, not a uniform distribution*/
   	   
@@ -231,7 +236,7 @@ PROCESS_THREAD(thermostat, ev, data)
 				{
 					temperature+=ventilation_unit? 2 : 1;
 				}
-				
+				printf("Temperature: %d",temperature);
 				etimer_restart(&et);
 			}
     }
