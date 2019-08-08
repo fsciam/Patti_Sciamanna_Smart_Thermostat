@@ -9,8 +9,6 @@
 #include "er-coap-13.h"
 
 #include "dev/leds.h"
-#include "sys/node-id.h"
-#include "sys/clock.h"
 
 #define SENDING_PERIOD 5
 #define TEMPERATURE_PERIOD 3
@@ -56,7 +54,7 @@ heating_opt_handler(void* request, void* response, uint8_t *buffer, uint16_t pre
 	 	option_selected=atoi(opt);
 		REST.set_header_content_type(response, REST.type.APPLICATION_JSON);
 	
-		printf("Received request for option: %d",option_selected);
+		printf("Received request for option: %d\n",option_selected);
 	
 	
 	
@@ -81,7 +79,7 @@ heating_opt_handler(void* request, void* response, uint8_t *buffer, uint16_t pre
 						air_conditioning=0;
 						heating_unit=0;
 					}
-					printf("Air conditioning: %d",air_conditioning);
+					printf("Air conditioning: %d\n",air_conditioning);
 				
 					success=1;
 					status=air_conditioning;
@@ -106,7 +104,7 @@ heating_opt_handler(void* request, void* response, uint8_t *buffer, uint16_t pre
 						heating_unit=0;
 						air_conditioning=0;
 					}
-					printf("Heating unit: %d",heating_unit);
+					printf("Heating unit: %d\n",heating_unit);
 				
 					success=1;
 					status=heating_unit;
@@ -121,7 +119,7 @@ heating_opt_handler(void* request, void* response, uint8_t *buffer, uint16_t pre
 					ventilation_unit=0;
 				else
 					ventilation_unit=ventilation_unit? 0: 1;
-				printf("Ventilation unit: %d",ventilation_unit);
+				printf("Ventilation unit: %d\n",ventilation_unit);
 				
 				success=1;
 				status=ventilation_unit;
@@ -233,7 +231,7 @@ PROCESS_THREAD(thermostat, ev, data)
   cooja simulation generate always the same set of numbers*/ 
   temperature=10+random_at_most(20);
   printf("Initialize temperature to %d Celsius degrees\n",temperature);
-
+	
 	/* set timer to expire after TEMPERATURE_PERIOD seconds to allow temperature simulation */
   etimer_set(&et, CLOCK_SECOND * TEMPERATURE_PERIOD);
 	
@@ -256,7 +254,7 @@ PROCESS_THREAD(thermostat, ev, data)
 				{
 					temperature+=ventilation_unit? 2 : 1;
 				}
-				printf("Temperature: %d",temperature);
+				printf("Temperature: %d\n",temperature);
 				etimer_restart(&et);
 			}
     }
