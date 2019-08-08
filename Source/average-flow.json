@@ -1,11 +1,404 @@
 [
     {
-        "id": "e4a08012.ce9bd8",
+        "id": "b0112fd7.801528",
+        "type": "tab",
+        "label": "Average",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b14b3bb5.21e44",
+        "type": "inject",
+        "z": "b0112fd7.801528",
+        "name": "Average inject",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "20",
+        "x": 120,
+        "y": 260,
+        "wires": [
+            [
+                "98d61d0d.1e896",
+                "1c7c3904.ec7ef7",
+                "89cbc93.a6076b8",
+                "c27dfe82.18b2",
+                "6d68b49b.0e050c"
+            ]
+        ]
+    },
+    {
+        "id": "98d61d0d.1e896",
+        "type": "file in",
+        "z": "b0112fd7.801528",
+        "name": "",
+        "filename": "room1Temp",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "x": 350,
+        "y": 120,
+        "wires": [
+            [
+                "908a9f40.263e48",
+                "f23b6985.3577a8"
+            ]
+        ]
+    },
+    {
+        "id": "72c25e18.ff6378",
+        "type": "function",
+        "z": "b0112fd7.801528",
+        "name": "RoomAvg",
+        "func": "var num = msg.payload.split(\"\\n\");\nvar avg = 0;\n\nfor(var i = 0; i < num.length - 1; i++)\n{\n    avg += parseInt(num[i]);\n}\nmsg.payload = avg/(num.length - 1);\n\nvar newMsg = {payload: parseInt(num[num.length - 2])};\nreturn [msg, newMsg];",
+        "outputs": 2,
+        "noerr": 0,
+        "x": 820,
+        "y": 260,
+        "wires": [
+            [
+                "b4b1a6bb.22679",
+                "fca1e8fe.a815e8"
+            ],
+            [
+                "c89aaf6b.fd50f8"
+            ]
+        ]
+    },
+    {
+        "id": "1c7c3904.ec7ef7",
+        "type": "file in",
+        "z": "b0112fd7.801528",
+        "name": "",
+        "filename": "room2Temp",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "x": 350,
+        "y": 220,
+        "wires": [
+            [
+                "cf9aa11f.559698",
+                "cc1cb401.1ac84"
+            ]
+        ]
+    },
+    {
+        "id": "89cbc93.a6076b8",
+        "type": "file in",
+        "z": "b0112fd7.801528",
+        "name": "",
+        "filename": "room3Temp",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "x": 350,
+        "y": 320,
+        "wires": [
+            [
+                "57192235.68a11c",
+                "879012bb.23e7e8"
+            ]
+        ]
+    },
+    {
+        "id": "c27dfe82.18b2",
+        "type": "file in",
+        "z": "b0112fd7.801528",
+        "name": "",
+        "filename": "room4Temp",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "x": 350,
+        "y": 420,
+        "wires": [
+            [
+                "51d747d4.47bb6",
+                "a048e94b.72149"
+            ]
+        ]
+    },
+    {
+        "id": "cf9aa11f.559698",
+        "type": "change",
+        "z": "b0112fd7.801528",
+        "name": "room2 Topic",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "room2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 240,
+        "wires": [
+            [
+                "72c25e18.ff6378"
+            ]
+        ]
+    },
+    {
+        "id": "908a9f40.263e48",
+        "type": "change",
+        "z": "b0112fd7.801528",
+        "name": "room1 Topic",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "room1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 140,
+        "wires": [
+            [
+                "72c25e18.ff6378"
+            ]
+        ]
+    },
+    {
+        "id": "57192235.68a11c",
+        "type": "change",
+        "z": "b0112fd7.801528",
+        "name": "room3 Topic",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "room3",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 340,
+        "wires": [
+            [
+                "72c25e18.ff6378"
+            ]
+        ]
+    },
+    {
+        "id": "51d747d4.47bb6",
+        "type": "change",
+        "z": "b0112fd7.801528",
+        "name": "room4 Topic",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "room4",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 440,
+        "wires": [
+            [
+                "72c25e18.ff6378"
+            ]
+        ]
+    },
+    {
+        "id": "c89aaf6b.fd50f8",
+        "type": "function",
+        "z": "b0112fd7.801528",
+        "name": "HomeAvg",
+        "func": "var count   = flow.get('count') || 0;\nvar sum     = flow.get('sum') || 0;\n\nsum += msg.payload;\n\nif(++count == 4) //Change based on motes\n{\n    msg.payload = sum / 4;\n    \n    return msg;\n}\nelse\n{\n    flow.set('count', count);\n    flow.set('sum', sum);\n    return null;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1020,
+        "y": 300,
+        "wires": [
+            [
+                "54a02e4e.5cfc8"
+            ]
+        ]
+    },
+    {
+        "id": "54a02e4e.5cfc8",
+        "type": "switch",
+        "z": "b0112fd7.801528",
+        "name": "NOT NULL",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1210,
+        "y": 300,
+        "wires": [
+            [
+                "1ea0c24e.c1d1b6"
+            ]
+        ]
+    },
+    {
+        "id": "f23b6985.3577a8",
+        "type": "file",
+        "z": "b0112fd7.801528",
+        "name": "Reset room1Temp",
+        "filename": "room1Temp",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "delete",
+        "x": 550,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cc1cb401.1ac84",
+        "type": "file",
+        "z": "b0112fd7.801528",
+        "name": "Reset room2Temp",
+        "filename": "room2Temp",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "delete",
+        "x": 550,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "879012bb.23e7e8",
+        "type": "file",
+        "z": "b0112fd7.801528",
+        "name": "Reset room3Temp",
+        "filename": "room3Temp",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "delete",
+        "x": 550,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a048e94b.72149",
+        "type": "file",
+        "z": "b0112fd7.801528",
+        "name": "Reset room4Temp",
+        "filename": "room4Temp",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "delete",
+        "x": 550,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "30eda8d6.00ebe",
+        "type": "catch",
+        "z": "b0112fd7.801528",
+        "name": "",
+        "scope": [
+            "f23b6985.3577a8",
+            "cc1cb401.1ac84",
+            "879012bb.23e7e8",
+            "a048e94b.72149",
+            "98d61d0d.1e896",
+            "1c7c3904.ec7ef7",
+            "89cbc93.a6076b8",
+            "c27dfe82.18b2"
+        ],
+        "x": 330,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "355eb1ad.35cea6",
         "type": "ui_chart",
-        "z": "3ac47ca6.26207c",
+        "z": "b0112fd7.801528",
         "name": "",
         "group": "11087d11.6fc88b",
         "order": 2,
+        "width": "24",
+        "height": "6",
+        "label": "House Temperature (AVG)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": "10",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#0297ff",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 1540,
+        "y": 520,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "b4b1a6bb.22679",
+        "type": "ui_chart",
+        "z": "b0112fd7.801528",
+        "name": "",
+        "group": "8c48261c.37e358",
+        "order": 1,
         "width": "24",
         "height": "6",
         "label": "Room Temperature (AVG)",
@@ -34,12 +427,121 @@
             "#c5b0d5"
         ],
         "useOldStyle": false,
-        "x": 1460,
-        "y": 300,
+        "x": 1080,
+        "y": 240,
         "wires": [
             [],
             []
         ]
+    },
+    {
+        "id": "6d68b49b.0e050c",
+        "type": "function",
+        "z": "b0112fd7.801528",
+        "name": "Reset flow variables",
+        "func": "flow.set('count', 0);\nflow.set('sum',0);\nflow.set('string_count', 0);\nflow.set('string', \"\");\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fca1e8fe.a815e8",
+        "type": "function",
+        "z": "b0112fd7.801528",
+        "name": "MQTT Field setter",
+        "func": "var data = flow.get('string') || \"\";\nvar count = flow.get('string_count') || 0;\n\nif(data != \"\")\n    data += \"&\";\n    \ndata += \"field\" + msg.topic.slice(-1) + \"=\" + msg.payload;\ncount++;\n\nif(count == 4)\n    return {payload: data};\nelse\n{\n    flow.set('string_count', count);\n    flow.set('string', data);\n    return null;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1050,
+        "y": 180,
+        "wires": [
+            [
+                "1b98cf9d.678088"
+            ]
+        ]
+    },
+    {
+        "id": "fa14ed74.a583d",
+        "type": "mqtt out",
+        "z": "b0112fd7.801528",
+        "name": "Publish room avg",
+        "topic": "channels/842037/publish/13FUQ1PG98XWMZ5E",
+        "qos": "0",
+        "retain": "false",
+        "broker": "1fc5397.a5dc947",
+        "x": 1470,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "1b98cf9d.678088",
+        "type": "switch",
+        "z": "b0112fd7.801528",
+        "name": "NOT NULL",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1250,
+        "y": 180,
+        "wires": [
+            [
+                "fa14ed74.a583d"
+            ]
+        ]
+    },
+    {
+        "id": "1ea0c24e.c1d1b6",
+        "type": "mqtt out",
+        "z": "b0112fd7.801528",
+        "name": "publish house avg",
+        "topic": "channels/842006/publish/fields/field1/VQK31CLNOHDJKKJI",
+        "qos": "0",
+        "retain": "false",
+        "broker": "1fc5397.a5dc947",
+        "x": 1470,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "6fd638c5.5df34",
+        "type": "mqtt in",
+        "z": "b0112fd7.801528",
+        "name": "",
+        "topic": "channels/842006/subscribe/json/0YBFUL2SOIMJ9HDI",
+        "qos": "0",
+        "broker": "e9b4af0c.2a9b58",
+        "x": 920,
+        "y": 520,
+        "wires": [
+            [
+                "d5a77d65.2b2d4"
+            ]
+        ]
+    },
+    {
+        "id": "d5a77d65.2b2d4",
+        "type": "debug",
+        "z": "b0112fd7.801528",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1290,
+        "y": 520,
+        "wires": []
     },
     {
         "id": "11087d11.6fc88b",
@@ -50,6 +552,60 @@
         "disp": true,
         "width": "24",
         "collapse": false
+    },
+    {
+        "id": "8c48261c.37e358",
+        "type": "ui_group",
+        "z": "",
+        "name": "AverageRoom",
+        "tab": "a018bfbd.b26318",
+        "disp": true,
+        "width": "24",
+        "collapse": false
+    },
+    {
+        "id": "1fc5397.a5dc947",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "thingspeak-publish",
+        "broker": "mqtt.thingspeak.com",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "e9b4af0c.2a9b58",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "thingspeak-subscribe",
+        "broker": "mqtt.thingspeak.com",
+        "port": "1883",
+        "clientid": "smartthermostat",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
     },
     {
         "id": "a018bfbd.b26318",
