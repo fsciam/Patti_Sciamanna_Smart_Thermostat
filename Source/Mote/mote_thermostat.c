@@ -21,7 +21,7 @@ static int8_t air_conditioning=0;
 static int8_t heating_unit=0;
 static int8_t ventilation_unit=0;
 /**************************************************************************************************************/
-RESOURCE(heating_opt,METHOD_GET | METHOD_POST, "actuators/heating", "title=\"Heating options: POST opt=0|1|2,\";rt=\"heating_opt\"");
+RESOURCE(heating_opt,METHOD_GET | METHOD_POST, "actuators/heating", "title=\"Heating options: POST opt=0|1|2|3|4|5|6|7|8,\";rt=\"heating_opt\"");
 
 void
 heating_opt_handler(void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
@@ -48,64 +48,91 @@ else
 {
 	
 	const char *opt = NULL;
- 	size_t len = REST.get_post_variable(request, "opt", &opt);
+ 	REST.get_post_variable(request, "opt", &opt);
 	int success=0;
 	int option_selected=atoi(opt);
 	
 	
 	printf("Received request for option: %d",option_selected);
-	char msg_buffer[100];
+	char msg_buffer[50];
 	
 	
-	if (len) {
+	
 	  
 	  
 	  
 	  
-	  if(option_selected == 0)
-	  {
-	  		if(!heating_unit)
-	  		{
+  if(option_selected == 0 || option_selected == 3 || option_selected == 4)
+  {
+  		if(!heating_unit || option_selected == 3 || option_selected == 4 )
+  		{
+				if(option_selected == 0)
 					air_conditioning=air_conditioning? 0 : 1;
-					printf("Air conditioning: %d",air_conditioning);
-					const char *msg=air_conditioning?"Air conditioner powered on":"Air conditioner powered off";
-					strcpy(msg_buffer,msg);
-					success=1;
+				else if(option_selected == 3)
+				{
+					air_conditioning=1;
+					heating_unit=0;
 				}
 				else
 				{
-					const char *msg="Cannot power on air conditioner if heater is on";
-					strcpy(msg_buffer,msg);
+					air_conditioning=0;
+					heating_unit=0;
 				}
+				printf("Air conditioning: %d",air_conditioning);
+				const char *msg=air_conditioning?"Air conditioner powered on":"Air conditioner powered off";
+				strcpy(msg_buffer,msg);
+				success=1;
+			}
+			else
+			{
+				const char *msg="Cannot power on air conditioner if heater is on";
+				strcpy(msg_buffer,msg);
+			}
 
-	  }
-	  else if(option_selected == 1)
-	  {
-	  	
-	  		if(!air_conditioning)
-	  		{
+  }
+  else if(option_selected == 1 || option_selected == 5 || option_selected == 6)
+  {
+  	
+  		if(!air_conditioning || option_selected == 5 || option_selected == 6)
+  		{
+  			if(option_selected == 1)
 					heating_unit=heating_unit? 0 : 1;
-					printf("Heating unit: %d",heating_unit);
-					const char *msg=heating_unit? "Heater powered on" : "Heater powered off";
-					strcpy(msg_buffer,msg);
-					success=1;
+				else if(option_selected == 5)
+				{
+					heating_unit=1;
+					air_conditioning=0;
 				}
 				else
 				{
-						const char *msg="Cannot power on heater if air conditioner is on";
-	  				strcpy(msg_buffer,msg);
-	  		}
-	  }
-	  else if(option_selected == 2)
-	  {
-	  		ventilation_unit=ventilation_unit? 0: 1;
-	  		printf("Ventilation unit: %d",ventilation_unit);
-	  		const char *msg=ventilation_unit? "Ventilator powered on" : "Ventilator powered off";
-	  		strcpy(msg_buffer,msg);
-	  		success=1;
-	  }
+					heating_unit=0;
+					air_conditioning=0;
+				}
+				printf("Heating unit: %d",heating_unit);
+				const char *msg=heating_unit? "Heater powered on" : "Heater powered off";
+				strcpy(msg_buffer,msg);
+				success=1;
+			}
+			else
+			{
+					const char *msg="Cannot power on heater if air conditioner is on";
+  				strcpy(msg_buffer,msg);
+  		}
+  }
+  else if(option_selected == 2 || option_selected == 7 || option_selected == 8)
+  {
+  		if(option_selected == 7)
+  			ventilation_unit=1;
+  		else if(option_selected == 8)
+  			ventilation_unit=0;
+  		else
+  			ventilation_unit=ventilation_unit? 0: 1;
+  		printf("Ventilation unit: %d",ventilation_unit);
+  		const char *msg=ventilation_unit? "Ventilator powered on" : "Ventilator powered off";
+  		strcpy(msg_buffer,msg);
+  		success=1;
+  }
 	  
-}
+
 	
 if(success) 
 	{
@@ -171,11 +198,10 @@ void
 temperature_periodic_handler(resource_t *r)
 {
   static int order=0;
-  char message[100];
+  char message[10];
   order++;
   coap_packet_t notification[1]; 
   coap_init_message(notification, COAP_TYPE_NON, REST.status.OK, 0 );
-  //coap_set_header_content_type(notification,APPLICATION_JSON);
   coap_set_payload(notification, message, snprintf(message,(int)sizeof(message),"%d",temperature));
   REST.notify_subscribers(r, order, notification);
 

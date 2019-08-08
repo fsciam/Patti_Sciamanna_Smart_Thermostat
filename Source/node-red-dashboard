@@ -1,0 +1,3004 @@
+[
+    {
+        "id": "9b70f5a9.df30e",
+        "type": "tab",
+        "label": "Average",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "43474f.080cd0b",
+        "type": "tab",
+        "label": "Room1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "d8902723.e69f98",
+        "type": "tab",
+        "label": "Room2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "fdef468.f476d38",
+        "type": "tab",
+        "label": "Room3",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "1be7f76b.adffe9",
+        "type": "tab",
+        "label": "Room4",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "c684704d.a58f18",
+        "type": "tab",
+        "label": "House",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "8f036ae8.44e868",
+        "type": "tab",
+        "label": "Settings",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "c6f2fa47.2ea918",
+        "type": "subflow",
+        "name": "Subflow 1",
+        "info": "",
+        "in": [],
+        "out": []
+    },
+    {
+        "id": "97434466.0266a8",
+        "type": "subflow",
+        "name": "Subflow 1 (2)",
+        "info": "",
+        "in": [],
+        "out": []
+    },
+    {
+        "id": "8a9a8a88.ca1ed",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-custom",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#0cc21a",
+                "baseFont": "Arial Black,Arial Black,Gadget,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#4B7930",
+                    "value": "#4B7930",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#4B7930",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": true
+                },
+                "group-textColor": {
+                    "value": "#6db046",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#4b7930",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            }
+        },
+        "site": {
+            "name": "Smart thermostat",
+            "hideToolbar": "false",
+            "allowSwipe": "true",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "9df99f44.89c748",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "thingspeak-subscribe",
+        "broker": "mqtt.thingspeak.com",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "3db35204.4b7846",
+        "type": "ui_group",
+        "z": "",
+        "name": "AverageHome",
+        "tab": "",
+        "disp": true,
+        "width": "24",
+        "collapse": false
+    },
+    {
+        "id": "6c9f032d.7d6c34",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "thingspeak-publish",
+        "broker": "mqtt.thingspeak.com",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "704d7d3e.1d38ac",
+        "type": "ui_group",
+        "z": "",
+        "name": "Mote1",
+        "tab": "6d1cefd3.b5bad8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "bf81a3d0.12846",
+        "type": "ui_group",
+        "z": "",
+        "name": "Mote 2",
+        "tab": "6d1cefd3.b5bad8",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "40e6e69f.8c3cf8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Mote 3",
+        "tab": "6d1cefd3.b5bad8",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "35c8ba03.b2c2b6",
+        "type": "ui_group",
+        "z": "",
+        "name": "Mote 4",
+        "tab": "6d1cefd3.b5bad8",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "6d1cefd3.b5bad8",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "fa-thermometer-half",
+        "order": 1
+    },
+    {
+        "id": "39678745.d49fd",
+        "type": "ui_group",
+        "z": "",
+        "name": "House",
+        "tab": "6d1cefd3.b5bad8",
+        "order": 5,
+        "disp": true,
+        "width": "9",
+        "collapse": false
+    },
+    {
+        "id": "f4f8e816.f1dbd",
+        "type": "ui_group",
+        "z": "",
+        "name": "Room 1",
+        "tab": "",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "e28b2874.9f7cd",
+        "type": "ui_group",
+        "z": "",
+        "name": "Room 2",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "f1bb043f.adf3d",
+        "type": "ui_group",
+        "z": "",
+        "name": "Room 3",
+        "tab": "",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "12aedeaa.feb189",
+        "type": "ui_group",
+        "z": "",
+        "name": "Room 4",
+        "tab": "",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "2a72532d.e60364",
+        "type": "ui_group",
+        "z": "",
+        "name": "House",
+        "tab": "",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "a9d642bc.05f97",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Settings",
+        "icon": "fa-cogs",
+        "order": 3
+    },
+    {
+        "id": "6160c2c2.44df2c",
+        "type": "ui_group",
+        "z": "",
+        "name": "Room 1 alert",
+        "tab": "a9d642bc.05f97",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "b86c27e4.2dc43",
+        "type": "ui_group",
+        "z": "",
+        "name": "Email",
+        "tab": "a9d642bc.05f97",
+        "order": 1,
+        "disp": true,
+        "width": "9",
+        "collapse": false
+    },
+    {
+        "id": "305ee3f7.392b1c",
+        "type": "ui_group",
+        "z": "",
+        "name": "Room 2 alert",
+        "tab": "a9d642bc.05f97",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "deb74e0f.688798",
+        "type": "ui_group",
+        "z": "",
+        "name": "Room 3 alert",
+        "tab": "a9d642bc.05f97",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "754e3bcd.e553fc",
+        "type": "ui_group",
+        "z": "",
+        "name": "Room 4 alert",
+        "tab": "a9d642bc.05f97",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "23d99995.12cdbe",
+        "type": "ui_group",
+        "z": "",
+        "name": "House alert",
+        "tab": "a9d642bc.05f97",
+        "order": 6,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "5caf4fb7.e6d3f8",
+        "type": "mqtt out",
+        "z": "9b70f5a9.df30e",
+        "name": "Publish room avg",
+        "topic": "channels/842037/publish/13FUQ1PG98XWMZ5E",
+        "qos": "0",
+        "retain": "false",
+        "broker": "6c9f032d.7d6c34",
+        "x": 870,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "4dace095.bb1318",
+        "type": "mqtt in",
+        "z": "9b70f5a9.df30e",
+        "name": "",
+        "topic": "channels/842037/subscribe/json/ZZ9GTFUH52EE9VY1",
+        "qos": "0",
+        "broker": "9df99f44.89c748",
+        "x": 250,
+        "y": 560,
+        "wires": [
+            [
+                "448a2d69.3ffe34"
+            ]
+        ]
+    },
+    {
+        "id": "569e759b.f30094",
+        "type": "coap request",
+        "z": "43474f.080cd0b",
+        "method": "GET",
+        "observe": true,
+        "url": "coap://[aaaa::212:7402:2:202]:5683/sensors/temp",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Temp Request",
+        "x": 420,
+        "y": 120,
+        "wires": [
+            [
+                "3c4fe8af.ca472",
+                "17722767.9387b1",
+                "a2989de1.4e8078"
+            ]
+        ]
+    },
+    {
+        "id": "fc5776df.833c2",
+        "type": "inject",
+        "z": "43474f.080cd0b",
+        "name": "Observe inject",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "569e759b.f30094",
+                "4fc88f3c.1865c"
+            ]
+        ]
+    },
+    {
+        "id": "166eaad8.979b75",
+        "type": "coap request",
+        "z": "43474f.080cd0b",
+        "method": "GET",
+        "observe": false,
+        "url": "coap://[aaaa::212:7402:2:202]:5683/actuators/heating",
+        "content-format": "application/json",
+        "raw-buffer": false,
+        "name": "Options GET",
+        "x": 410,
+        "y": 480,
+        "wires": [
+            [
+                "d380908f.210a08"
+            ]
+        ]
+    },
+    {
+        "id": "3c4fe8af.ca472",
+        "type": "ui_gauge",
+        "z": "43474f.080cd0b",
+        "name": "",
+        "group": "704d7d3e.1d38ac",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Room 1",
+        "label": "",
+        "format": "{{value}}°C",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#0917ff",
+            "#00ff0e",
+            "#ff0000"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "x": 660,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "dba9a5ef.86e0a8",
+        "type": "ui_button",
+        "z": "43474f.080cd0b",
+        "name": "Air conditioner",
+        "group": "704d7d3e.1d38ac",
+        "order": 3,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-3x fa-snowflake-o",
+        "payload": "opt=0",
+        "payloadType": "str",
+        "topic": "",
+        "x": 160,
+        "y": 280,
+        "wires": [
+            [
+                "1ede298c.329e3e"
+            ]
+        ]
+    },
+    {
+        "id": "fafbe889.6fbad",
+        "type": "ui_button",
+        "z": "43474f.080cd0b",
+        "name": "Heating",
+        "group": "704d7d3e.1d38ac",
+        "order": 4,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-3x fa-fire",
+        "payload": "opt=1",
+        "payloadType": "str",
+        "topic": "",
+        "x": 180,
+        "y": 340,
+        "wires": [
+            [
+                "1ede298c.329e3e"
+            ]
+        ]
+    },
+    {
+        "id": "22097a0c.8ca426",
+        "type": "ui_button",
+        "z": "43474f.080cd0b",
+        "name": "Ventilation",
+        "group": "704d7d3e.1d38ac",
+        "order": 5,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-3x fa-refresh",
+        "payload": "opt=2",
+        "payloadType": "str",
+        "topic": "",
+        "x": 170,
+        "y": 400,
+        "wires": [
+            [
+                "1ede298c.329e3e"
+            ]
+        ]
+    },
+    {
+        "id": "7692d552.a2fd34",
+        "type": "ui_button",
+        "z": "43474f.080cd0b",
+        "name": "",
+        "group": "704d7d3e.1d38ac",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Room status",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 170,
+        "y": 480,
+        "wires": [
+            [
+                "166eaad8.979b75"
+            ]
+        ]
+    },
+    {
+        "id": "d380908f.210a08",
+        "type": "function",
+        "z": "43474f.080cd0b",
+        "name": "",
+        "func": "var obj=msg.payload;\nvar conditioning=obj.air_conditioning;\nvar heating=obj.heating_unit;\nvar ventilation=obj.ventilation_unit;\nmsg.payload=\"Air conditioner: \";\nif(conditioning)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\nmsg.payload=msg.payload+\"Heating: \";\nif(heating)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\nmsg.payload=msg.payload+\"Ventilation: \";\nif(ventilation)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 480,
+        "wires": [
+            [
+                "2476bcb7.a7f47c"
+            ]
+        ]
+    },
+    {
+        "id": "2476bcb7.a7f47c",
+        "type": "ui_toast",
+        "z": "43474f.080cd0b",
+        "position": "dialog",
+        "displayTime": "4",
+        "highlight": "",
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 1 status",
+        "name": "Status",
+        "x": 870,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1ede298c.329e3e",
+        "type": "coap request",
+        "z": "43474f.080cd0b",
+        "method": "POST",
+        "observe": false,
+        "url": "coap://[aaaa::212:7402:2:202]:5683/actuators/heating",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Options POST",
+        "x": 420,
+        "y": 340,
+        "wires": [
+            [
+                "5b3e985a.d65dd"
+            ]
+        ]
+    },
+    {
+        "id": "5b3e985a.d65dd",
+        "type": "ui_toast",
+        "z": "43474f.080cd0b",
+        "position": "top right",
+        "displayTime": "2",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 1",
+        "name": "Action notification",
+        "x": 690,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "2e5c7bff.7cd754",
+        "type": "inject",
+        "z": "c684704d.a58f18",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.2",
+        "x": 470,
+        "y": 100,
+        "wires": [
+            [
+                "782b172.12792e8"
+            ]
+        ]
+    },
+    {
+        "id": "782b172.12792e8",
+        "type": "function",
+        "z": "c684704d.a58f18",
+        "name": "",
+        "func": "var house=global.get(\"House\");\nvar temp1=global.get(\"Room1\");\nvar temp2=global.get(\"Room2\");\nvar temp3=global.get(\"Room3\");\nvar temp4=global.get(\"Room4\");\n\nvar avg=(temp1[temp1.length-1]+temp2[temp2.length-1]+temp3[temp3.length-1]+temp4[temp4.length-1])/4;\nif (!Number.isNaN(avg))\n{   house.push(avg);\n    msg.payload=avg;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 100,
+        "wires": [
+            [
+                "26c368aa.28149",
+                "62e4e007.52ed28"
+            ]
+        ]
+    },
+    {
+        "id": "c9da199a.5bec88",
+        "type": "coap request",
+        "z": "d8902723.e69f98",
+        "method": "GET",
+        "observe": true,
+        "url": "coap://[aaaa::212:7403:3:303]:5683/sensors/temp",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Temp Request",
+        "x": 380,
+        "y": 60,
+        "wires": [
+            [
+                "9e7ccbbd.bd697",
+                "66002506.ccaff4",
+                "68074927.871ac"
+            ]
+        ]
+    },
+    {
+        "id": "fd683782.bc15",
+        "type": "inject",
+        "z": "d8902723.e69f98",
+        "name": "Observe inject",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 60,
+        "wires": [
+            [
+                "c9da199a.5bec88",
+                "488074b2.825144"
+            ]
+        ]
+    },
+    {
+        "id": "486222e2.0599b4",
+        "type": "coap request",
+        "z": "d8902723.e69f98",
+        "method": "GET",
+        "observe": false,
+        "url": "coap://[aaaa::212:7403:3:303]:5683/actuators/heating",
+        "content-format": "application/json",
+        "raw-buffer": false,
+        "name": "Options GET",
+        "x": 370,
+        "y": 420,
+        "wires": [
+            [
+                "4ed2fae2.8dc584"
+            ]
+        ]
+    },
+    {
+        "id": "bfd880f3.953918",
+        "type": "ui_button",
+        "z": "d8902723.e69f98",
+        "name": "Air conditioner",
+        "group": "bf81a3d0.12846",
+        "order": 3,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-3x fa-snowflake-o",
+        "payload": "opt=0",
+        "payloadType": "str",
+        "topic": "",
+        "x": 120,
+        "y": 220,
+        "wires": [
+            [
+                "c4025133.6a1b28"
+            ]
+        ]
+    },
+    {
+        "id": "7e0a3b74.3a2d6c",
+        "type": "ui_button",
+        "z": "d8902723.e69f98",
+        "name": "Heating",
+        "group": "bf81a3d0.12846",
+        "order": 5,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-3x fa-fire",
+        "payload": "opt=1",
+        "payloadType": "str",
+        "topic": "",
+        "x": 140,
+        "y": 280,
+        "wires": [
+            [
+                "c4025133.6a1b28"
+            ]
+        ]
+    },
+    {
+        "id": "b561374e.78ea5",
+        "type": "ui_button",
+        "z": "d8902723.e69f98",
+        "name": "Ventilation",
+        "group": "bf81a3d0.12846",
+        "order": 4,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-3x fa-refresh",
+        "payload": "opt=2",
+        "payloadType": "str",
+        "topic": "",
+        "x": 130,
+        "y": 340,
+        "wires": [
+            [
+                "c4025133.6a1b28"
+            ]
+        ]
+    },
+    {
+        "id": "3001e1b6.b048a6",
+        "type": "ui_button",
+        "z": "d8902723.e69f98",
+        "name": "",
+        "group": "bf81a3d0.12846",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Room status",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 130,
+        "y": 420,
+        "wires": [
+            [
+                "486222e2.0599b4"
+            ]
+        ]
+    },
+    {
+        "id": "4ed2fae2.8dc584",
+        "type": "function",
+        "z": "d8902723.e69f98",
+        "name": "",
+        "func": "var obj=msg.payload;\nvar conditioning=obj.air_conditioning;\nvar heating=obj.heating_unit;\nvar ventilation=obj.ventilation_unit;\nmsg.payload=\"Air conditioner: \";\nif(conditioning)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\nmsg.payload=msg.payload+\"Heating: \";\nif(heating)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\nmsg.payload=msg.payload+\"Ventilation: \";\nif(ventilation)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 610,
+        "y": 420,
+        "wires": [
+            [
+                "e9424364.e0f7b8"
+            ]
+        ]
+    },
+    {
+        "id": "e9424364.e0f7b8",
+        "type": "ui_toast",
+        "z": "d8902723.e69f98",
+        "position": "dialog",
+        "displayTime": "4",
+        "highlight": "",
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 2 status",
+        "name": "Status",
+        "x": 830,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c4025133.6a1b28",
+        "type": "coap request",
+        "z": "d8902723.e69f98",
+        "method": "POST",
+        "observe": false,
+        "url": "coap://[aaaa::212:7403:3:303]:5683/actuators/heating",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Options POST",
+        "x": 380,
+        "y": 280,
+        "wires": [
+            [
+                "1396e7aa.b8a93"
+            ]
+        ]
+    },
+    {
+        "id": "1396e7aa.b8a93",
+        "type": "ui_toast",
+        "z": "d8902723.e69f98",
+        "position": "top right",
+        "displayTime": "2",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 2",
+        "name": "Action notification",
+        "x": 650,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "9e7ccbbd.bd697",
+        "type": "ui_gauge",
+        "z": "d8902723.e69f98",
+        "name": "",
+        "group": "bf81a3d0.12846",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Room 2",
+        "label": "",
+        "format": "{{value}}°C",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#0917ff",
+            "#00ff0e",
+            "#ff0000"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "x": 620,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "df4d9a1c.2c9be8",
+        "type": "coap request",
+        "z": "fdef468.f476d38",
+        "method": "GET",
+        "observe": true,
+        "url": "coap://[aaaa::212:7404:4:404]:5683/sensors/temp",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Temp Request",
+        "x": 340,
+        "y": 40,
+        "wires": [
+            [
+                "9612e424.b73208",
+                "f0d0ad3d.9cdb9",
+                "7a917613.28d738"
+            ]
+        ]
+    },
+    {
+        "id": "96ea59d2.ddc3c",
+        "type": "inject",
+        "z": "fdef468.f476d38",
+        "name": "Observe inject",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 80,
+        "y": 40,
+        "wires": [
+            [
+                "df4d9a1c.2c9be8",
+                "d3090295.02f138"
+            ]
+        ]
+    },
+    {
+        "id": "4d83c04d.edc218",
+        "type": "coap request",
+        "z": "fdef468.f476d38",
+        "method": "GET",
+        "observe": false,
+        "url": "coap://[aaaa::212:7404:4:404]:5683/actuators/heating",
+        "content-format": "application/json",
+        "raw-buffer": false,
+        "name": "Options GET",
+        "x": 330,
+        "y": 400,
+        "wires": [
+            [
+                "5f5a1e2.2a19f6"
+            ]
+        ]
+    },
+    {
+        "id": "2580cb03.cbf8e4",
+        "type": "ui_button",
+        "z": "fdef468.f476d38",
+        "name": "Air conditioner",
+        "group": "40e6e69f.8c3cf8",
+        "order": 3,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-3x fa-snowflake-o",
+        "payload": "opt=0",
+        "payloadType": "str",
+        "topic": "",
+        "x": 80,
+        "y": 200,
+        "wires": [
+            [
+                "2ff888b5.0ae4c8"
+            ]
+        ]
+    },
+    {
+        "id": "5696e3a9.78a54c",
+        "type": "ui_button",
+        "z": "fdef468.f476d38",
+        "name": "Heating",
+        "group": "40e6e69f.8c3cf8",
+        "order": 4,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-3x fa-fire",
+        "payload": "opt=1",
+        "payloadType": "str",
+        "topic": "",
+        "x": 100,
+        "y": 260,
+        "wires": [
+            [
+                "2ff888b5.0ae4c8"
+            ]
+        ]
+    },
+    {
+        "id": "4516f90b.51f45",
+        "type": "ui_button",
+        "z": "fdef468.f476d38",
+        "name": "Ventilation",
+        "group": "40e6e69f.8c3cf8",
+        "order": 5,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-3x fa-refresh",
+        "payload": "opt=2",
+        "payloadType": "str",
+        "topic": "",
+        "x": 90,
+        "y": 320,
+        "wires": [
+            [
+                "2ff888b5.0ae4c8"
+            ]
+        ]
+    },
+    {
+        "id": "406e579a.88c13",
+        "type": "ui_button",
+        "z": "fdef468.f476d38",
+        "name": "",
+        "group": "40e6e69f.8c3cf8",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Room status",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 90,
+        "y": 400,
+        "wires": [
+            [
+                "4d83c04d.edc218"
+            ]
+        ]
+    },
+    {
+        "id": "5f5a1e2.2a19f6",
+        "type": "function",
+        "z": "fdef468.f476d38",
+        "name": "",
+        "func": "var obj=msg.payload;\nvar conditioning=obj.air_conditioning;\nvar heating=obj.heating_unit;\nvar ventilation=obj.ventilation_unit;\nmsg.payload=\"Air conditioner: \";\nif(conditioning)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\nmsg.payload=msg.payload+\"Heating: \";\nif(heating)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\nmsg.payload=msg.payload+\"Ventilation: \";\nif(ventilation)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 570,
+        "y": 400,
+        "wires": [
+            [
+                "2b393550.aebc22"
+            ]
+        ]
+    },
+    {
+        "id": "2b393550.aebc22",
+        "type": "ui_toast",
+        "z": "fdef468.f476d38",
+        "position": "dialog",
+        "displayTime": "4",
+        "highlight": "",
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 3 status",
+        "name": "Status",
+        "x": 790,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2ff888b5.0ae4c8",
+        "type": "coap request",
+        "z": "fdef468.f476d38",
+        "method": "POST",
+        "observe": false,
+        "url": "coap://[aaaa::212:7404:4:404]:5683/actuators/heating",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Options POST",
+        "x": 340,
+        "y": 260,
+        "wires": [
+            [
+                "53debd26.6982ac"
+            ]
+        ]
+    },
+    {
+        "id": "53debd26.6982ac",
+        "type": "ui_toast",
+        "z": "fdef468.f476d38",
+        "position": "top right",
+        "displayTime": "2",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 3",
+        "name": "Action notification",
+        "x": 610,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "9612e424.b73208",
+        "type": "ui_gauge",
+        "z": "fdef468.f476d38",
+        "name": "",
+        "group": "40e6e69f.8c3cf8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Room 3",
+        "label": "",
+        "format": "{{value}}°C",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#0917ff",
+            "#00ff0e",
+            "#ff0000"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "x": 680,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "780f410b.4e44",
+        "type": "coap request",
+        "z": "1be7f76b.adffe9",
+        "method": "GET",
+        "observe": false,
+        "url": "coap://[aaaa::212:7405:5:505]:5683/actuators/heating",
+        "content-format": "application/json",
+        "raw-buffer": false,
+        "name": "Options GET",
+        "x": 490,
+        "y": 440,
+        "wires": [
+            [
+                "71356053.67b4d8"
+            ]
+        ]
+    },
+    {
+        "id": "79b345a2.d31734",
+        "type": "ui_button",
+        "z": "1be7f76b.adffe9",
+        "name": "Air conditioner",
+        "group": "35c8ba03.b2c2b6",
+        "order": 3,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-3x fa-snowflake-o",
+        "payload": "opt=0",
+        "payloadType": "str",
+        "topic": "",
+        "x": 240,
+        "y": 240,
+        "wires": [
+            [
+                "dcb6a5a8.2bb0a8"
+            ]
+        ]
+    },
+    {
+        "id": "2c3dab05.8dcc04",
+        "type": "ui_button",
+        "z": "1be7f76b.adffe9",
+        "name": "Heating",
+        "group": "35c8ba03.b2c2b6",
+        "order": 4,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-3x fa-fire",
+        "payload": "opt=1",
+        "payloadType": "str",
+        "topic": "",
+        "x": 260,
+        "y": 300,
+        "wires": [
+            [
+                "dcb6a5a8.2bb0a8"
+            ]
+        ]
+    },
+    {
+        "id": "15a72504.44af0b",
+        "type": "ui_button",
+        "z": "1be7f76b.adffe9",
+        "name": "Ventilation",
+        "group": "35c8ba03.b2c2b6",
+        "order": 5,
+        "width": "2",
+        "height": "2",
+        "passthru": false,
+        "label": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-3x fa-refresh",
+        "payload": "opt=2",
+        "payloadType": "str",
+        "topic": "",
+        "x": 250,
+        "y": 360,
+        "wires": [
+            [
+                "dcb6a5a8.2bb0a8"
+            ]
+        ]
+    },
+    {
+        "id": "8da245f1.5d8db",
+        "type": "ui_button",
+        "z": "1be7f76b.adffe9",
+        "name": "",
+        "group": "35c8ba03.b2c2b6",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Room status",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 250,
+        "y": 440,
+        "wires": [
+            [
+                "780f410b.4e44"
+            ]
+        ]
+    },
+    {
+        "id": "71356053.67b4d8",
+        "type": "function",
+        "z": "1be7f76b.adffe9",
+        "name": "",
+        "func": "var obj=msg.payload;\nvar conditioning=obj.air_conditioning;\nvar heating=obj.heating_unit;\nvar ventilation=obj.ventilation_unit;\nmsg.payload=\"Air conditioner: \";\nif(conditioning)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\nmsg.payload=msg.payload+\"Heating: \";\nif(heating)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\nmsg.payload=msg.payload+\"Ventilation: \";\nif(ventilation)\n    msg.payload=msg.payload + \"ON \";\nelse\n    msg.payload=msg.payload + \"OFF \";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 730,
+        "y": 440,
+        "wires": [
+            [
+                "f6684cfb.4d2c4"
+            ]
+        ]
+    },
+    {
+        "id": "f6684cfb.4d2c4",
+        "type": "ui_toast",
+        "z": "1be7f76b.adffe9",
+        "position": "dialog",
+        "displayTime": "4",
+        "highlight": "",
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 3 status",
+        "name": "Status",
+        "x": 950,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dcb6a5a8.2bb0a8",
+        "type": "coap request",
+        "z": "1be7f76b.adffe9",
+        "method": "POST",
+        "observe": false,
+        "url": "coap://[aaaa::212:7405:5:505]:5683/actuators/heating",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Options POST",
+        "x": 500,
+        "y": 300,
+        "wires": [
+            [
+                "27b9fb2a.6eb9cc"
+            ]
+        ]
+    },
+    {
+        "id": "27b9fb2a.6eb9cc",
+        "type": "ui_toast",
+        "z": "1be7f76b.adffe9",
+        "position": "top right",
+        "displayTime": "2",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 3",
+        "name": "Action notification",
+        "x": 770,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "264f31b9.40f74e",
+        "type": "coap request",
+        "z": "1be7f76b.adffe9",
+        "method": "GET",
+        "observe": true,
+        "url": "coap://[aaaa::212:7405:5:505]:5683/sensors/temp",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Temp Request",
+        "x": 500,
+        "y": 80,
+        "wires": [
+            [
+                "1587e52d.56f673",
+                "770cd347.ab2c2c",
+                "b0e540a7.91c62"
+            ]
+        ]
+    },
+    {
+        "id": "a6c012c4.d570e",
+        "type": "inject",
+        "z": "1be7f76b.adffe9",
+        "name": "Observe inject",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 240,
+        "y": 80,
+        "wires": [
+            [
+                "264f31b9.40f74e",
+                "463fa1a7.fa7978"
+            ]
+        ]
+    },
+    {
+        "id": "1587e52d.56f673",
+        "type": "ui_gauge",
+        "z": "1be7f76b.adffe9",
+        "name": "",
+        "group": "35c8ba03.b2c2b6",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Room 4",
+        "label": "",
+        "format": "{{value}}°C",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#0917ff",
+            "#00ff0e",
+            "#ff0000"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "x": 740,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "669c76d3.17ea08",
+        "type": "inject",
+        "z": "8f036ae8.44e868",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0",
+        "x": 190,
+        "y": 60,
+        "wires": [
+            [
+                "fcca09b4.0f86d"
+            ]
+        ]
+    },
+    {
+        "id": "fcca09b4.0f86d",
+        "type": "function",
+        "z": "8f036ae8.44e868",
+        "name": "Create global variables",
+        "func": "global.set(\"Room1\",[]);\nglobal.set(\"Room2\",[]);\nglobal.set(\"Room3\",[]);\nglobal.set(\"Room4\",[]);\nglobal.set(\"House\",[]);\nglobal.set(\"alert_room1_enabled\",false);\nglobal.set(\"alert_room1_high\",0);\nglobal.set(\"alert_room1_low\",0);\nglobal.set(\"alert_room2_enabled\",false);\nglobal.set(\"alert_room2_high\",0);\nglobal.set(\"alert_room2_low\",0);\nglobal.set(\"alert_room3_enabled\",false);\nglobal.set(\"alert_room3_high\",0);\nglobal.set(\"alert_room3_low\",0);\nglobal.set(\"alert_room4_enabled\",false);\nglobal.set(\"alert_room4_high\",0);\nglobal.set(\"alert_room4_low\",0);\nglobal.set(\"alert_house_enabled\",false);\nglobal.set(\"alert_house_high\",0);\nglobal.set(\"alert_house_low\",0);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "17722767.9387b1",
+        "type": "function",
+        "z": "43474f.080cd0b",
+        "name": "Store temperature",
+        "func": "var temp=global.get(\"Room1\");\ntemp.push(parseInt(msg.payload));\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "66002506.ccaff4",
+        "type": "function",
+        "z": "d8902723.e69f98",
+        "name": "Store temperature",
+        "func": "var temp=global.get(\"Room2\");\ntemp.push(parseInt(msg.payload));\nmsg.payload=temp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 630,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f0d0ad3d.9cdb9",
+        "type": "function",
+        "z": "fdef468.f476d38",
+        "name": "Store temperature",
+        "func": "var temp=global.get(\"Room3\");\ntemp.push(parseInt(msg.payload));\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 590,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "770cd347.ab2c2c",
+        "type": "function",
+        "z": "1be7f76b.adffe9",
+        "name": "Store temperature",
+        "func": "var temp=global.get(\"Room4\");\ntemp.push(parseInt(msg.payload));\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 750,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d84eb4e0.6e5d68",
+        "type": "debug",
+        "z": "43474f.080cd0b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 880,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "26c368aa.28149",
+        "type": "ui_gauge",
+        "z": "c684704d.a58f18",
+        "name": "",
+        "group": "39678745.d49fd",
+        "order": 1,
+        "width": "4",
+        "height": "5",
+        "gtype": "gage",
+        "title": "House average",
+        "label": "",
+        "format": "{{value}}°C",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#0917ff",
+            "#00ff0e",
+            "#ff0000"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "x": 860,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "65ad7e4.a389a",
+        "type": "inject",
+        "z": "9b70f5a9.df30e",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "60",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 150,
+        "y": 700,
+        "wires": [
+            [
+                "d9d498e8.2e581"
+            ]
+        ]
+    },
+    {
+        "id": "d9d498e8.2e581",
+        "type": "function",
+        "z": "9b70f5a9.df30e",
+        "name": "Compute all the avg temp",
+        "func": "var temp1_array=global.get(\"Room1\");\nvar temp2_array=global.get(\"Room2\");\nvar temp3_array=global.get(\"Room3\");\nvar temp4_array=global.get(\"Room4\");\nvar house_array=global.get(\"House\");\n\nvar avg_1=0;\nfor(i=0;i<temp1_array.length;i++)\n{\n    avg_1=avg_1+temp1_array[i];\n}\navg_1= avg_1/temp1_array.length;\ntemp1_array.length=0;\n\nvar avg_2=0;\nfor(i=0;i<temp2_array.length;i++)\n{\n    avg_2=avg_2+temp2_array[i];\n}\navg_2= avg_2/temp2_array.length;\ntemp2_array.length=0;\n\nvar avg_3=0;\nfor(i=0;i<temp3_array.length;i++)\n{\n    avg_3=avg_3+temp3_array[i];\n}\navg_3= avg_3/temp3_array.length;\ntemp3_array.length=0;\n\nvar avg_4=0;\nfor(i=0;i<temp4_array.length;i++)\n{\n    avg_4=avg_4+temp4_array[i];\n}\navg_4= avg_4/temp4_array.length;\ntemp4_array.length=0;\n\nvar avg_house=0;\nfor(i=0;i<house_array.length;i++)\n{\n    avg_house=avg_house+house_array[i];\n}\navg_house= avg_house/house_array.length;\nhouse_array.length=0;\nmsg.payload=avg_house;\n\nvar room_msg={payload:\"field1=\"+avg_1+\"&field2=\"+avg_2+\"&field3=\"+avg_3+\"&field4=\"+avg_4};\nreturn [msg,room_msg];",
+        "outputs": 2,
+        "noerr": 0,
+        "x": 460,
+        "y": 700,
+        "wires": [
+            [
+                "414769d5.c4eb18",
+                "7eb08c39.23bb24"
+            ],
+            [
+                "5caf4fb7.e6d3f8"
+            ]
+        ]
+    },
+    {
+        "id": "1ac4128c.851df5",
+        "type": "debug",
+        "z": "d8902723.e69f98",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 860,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "4c636299.5d07ec",
+        "type": "function",
+        "z": "9b70f5a9.df30e",
+        "name": "splitter",
+        "func": "var msg1;\nvar msg2;\nvar msg3;\nvar msg4;\nvar field1=parseInt(msg.payload.field1);\nvar field2=parseInt(msg.payload.field2);\nvar field3=parseInt(msg.payload.field3);\nvar field4=parseInt(msg.payload.field4);\nmsg1={payload:field1};\nmsg2={payload:field2};\nmsg3={payload:field3};\nmsg4={payload:field4};\nreturn [msg1,msg2,msg3,msg4];",
+        "outputs": 4,
+        "noerr": 0,
+        "x": 700,
+        "y": 500,
+        "wires": [
+            [
+                "2a81e4ab.39008c"
+            ],
+            [
+                "bfae18df.ed22f"
+            ],
+            [
+                "ed8e6eeb.21b118"
+            ],
+            [
+                "3787bf24.0c8d8"
+            ]
+        ]
+    },
+    {
+        "id": "2a81e4ab.39008c",
+        "type": "ui_chart",
+        "z": "9b70f5a9.df30e",
+        "name": "",
+        "group": "704d7d3e.1d38ac",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 890,
+        "y": 340,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "bfae18df.ed22f",
+        "type": "ui_chart",
+        "z": "9b70f5a9.df30e",
+        "name": "",
+        "group": "bf81a3d0.12846",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 900,
+        "y": 440,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "ed8e6eeb.21b118",
+        "type": "ui_chart",
+        "z": "9b70f5a9.df30e",
+        "name": "",
+        "group": "40e6e69f.8c3cf8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 900,
+        "y": 520,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "3787bf24.0c8d8",
+        "type": "ui_chart",
+        "z": "9b70f5a9.df30e",
+        "name": "",
+        "group": "35c8ba03.b2c2b6",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 910,
+        "y": 580,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "448a2d69.3ffe34",
+        "type": "json",
+        "z": "9b70f5a9.df30e",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 560,
+        "y": 500,
+        "wires": [
+            [
+                "4c636299.5d07ec"
+            ]
+        ]
+    },
+    {
+        "id": "414769d5.c4eb18",
+        "type": "mqtt out",
+        "z": "9b70f5a9.df30e",
+        "name": "Publish house avg",
+        "topic": "channels/842006/publish/fields/field1/VQK31CLNOHDJKKJI",
+        "qos": "0",
+        "retain": "false",
+        "broker": "6c9f032d.7d6c34",
+        "x": 1050,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "7eb08c39.23bb24",
+        "type": "ui_chart",
+        "z": "9b70f5a9.df30e",
+        "name": "",
+        "group": "39678745.d49fd",
+        "order": 2,
+        "width": "4",
+        "height": "5",
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 880,
+        "y": 720,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "1c088ba2.2b1084",
+        "type": "e-mail",
+        "z": "8f036ae8.44e868",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": false,
+        "name": "",
+        "dname": "",
+        "x": 650,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "726dc8fb.633928",
+        "type": "ui_form",
+        "z": "8f036ae8.44e868",
+        "name": "Form room 1",
+        "label": "",
+        "group": "6160c2c2.44df2c",
+        "order": 0,
+        "width": "6",
+        "height": "2",
+        "options": [
+            {
+                "label": "Low treshold",
+                "value": "l_tresh",
+                "type": "number",
+                "required": true
+            },
+            {
+                "label": "High treshold",
+                "value": "h_tresh",
+                "type": "number",
+                "required": true
+            }
+        ],
+        "formValue": {
+            "l_tresh": "",
+            "h_tresh": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "x": 210,
+        "y": 400,
+        "wires": [
+            [
+                "293bcecc.800032"
+            ]
+        ]
+    },
+    {
+        "id": "8b7dd466.b96bf8",
+        "type": "ui_button",
+        "z": "c684704d.a58f18",
+        "name": "",
+        "group": "39678745.d49fd",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Air Conditioner ON",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=3",
+        "payloadType": "str",
+        "topic": "",
+        "x": 550,
+        "y": 220,
+        "wires": [
+            [
+                "397e6abe.d3d456",
+                "8df08a8a.d1d948",
+                "8ba162f7.8712a",
+                "e01eab00.88bfb8"
+            ]
+        ]
+    },
+    {
+        "id": "8f27461d.d5c238",
+        "type": "ui_button",
+        "z": "c684704d.a58f18",
+        "name": "",
+        "group": "39678745.d49fd",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Air Conditioner OFF",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=4",
+        "payloadType": "str",
+        "topic": "",
+        "x": 560,
+        "y": 280,
+        "wires": [
+            [
+                "397e6abe.d3d456",
+                "8df08a8a.d1d948",
+                "8ba162f7.8712a",
+                "e01eab00.88bfb8"
+            ]
+        ]
+    },
+    {
+        "id": "397e6abe.d3d456",
+        "type": "coap request",
+        "z": "c684704d.a58f18",
+        "method": "POST",
+        "observe": false,
+        "url": "coap://[aaaa::212:7402:2:202]:5683/actuators/heating",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Room 1",
+        "x": 840,
+        "y": 220,
+        "wires": [
+            [
+                "735c63d7.d341ac"
+            ]
+        ]
+    },
+    {
+        "id": "8df08a8a.d1d948",
+        "type": "coap request",
+        "z": "c684704d.a58f18",
+        "method": "POST",
+        "observe": false,
+        "url": "coap://[aaaa::212:7403:3:303]:5683/actuators/heating",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Room 2",
+        "x": 840,
+        "y": 280,
+        "wires": [
+            [
+                "7c9223ec.820f8c"
+            ]
+        ]
+    },
+    {
+        "id": "8ba162f7.8712a",
+        "type": "coap request",
+        "z": "c684704d.a58f18",
+        "method": "POST",
+        "observe": false,
+        "url": "coap://[aaaa::212:7404:4:404]:5683/actuators/heating",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Room 3",
+        "x": 840,
+        "y": 340,
+        "wires": [
+            [
+                "9e951717.488e"
+            ]
+        ]
+    },
+    {
+        "id": "e01eab00.88bfb8",
+        "type": "coap request",
+        "z": "c684704d.a58f18",
+        "method": "POST",
+        "observe": false,
+        "url": "coap://[aaaa::212:7405:5:505]:5683/actuators/heating",
+        "content-format": "text/plain",
+        "raw-buffer": false,
+        "name": "Room 4",
+        "x": 840,
+        "y": 400,
+        "wires": [
+            [
+                "40fb69dc.db77f"
+            ]
+        ]
+    },
+    {
+        "id": "49280f14.b564c",
+        "type": "ui_button",
+        "z": "c684704d.a58f18",
+        "name": "",
+        "group": "39678745.d49fd",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Heater ON",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=5",
+        "payloadType": "str",
+        "topic": "",
+        "x": 530,
+        "y": 340,
+        "wires": [
+            [
+                "397e6abe.d3d456",
+                "8df08a8a.d1d948",
+                "8ba162f7.8712a",
+                "e01eab00.88bfb8"
+            ]
+        ]
+    },
+    {
+        "id": "e2cd1546.3f83a8",
+        "type": "ui_button",
+        "z": "c684704d.a58f18",
+        "name": "",
+        "group": "39678745.d49fd",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Heater OFF",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=6",
+        "payloadType": "str",
+        "topic": "",
+        "x": 550,
+        "y": 400,
+        "wires": [
+            [
+                "397e6abe.d3d456",
+                "8df08a8a.d1d948",
+                "8ba162f7.8712a",
+                "e01eab00.88bfb8"
+            ]
+        ]
+    },
+    {
+        "id": "735c63d7.d341ac",
+        "type": "ui_toast",
+        "z": "c684704d.a58f18",
+        "position": "top right",
+        "displayTime": "2",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 1",
+        "name": "Action notification",
+        "x": 1110,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "7c9223ec.820f8c",
+        "type": "ui_toast",
+        "z": "c684704d.a58f18",
+        "position": "top right",
+        "displayTime": "2",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 1",
+        "name": "Action notification",
+        "x": 1110,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "9e951717.488e",
+        "type": "ui_toast",
+        "z": "c684704d.a58f18",
+        "position": "top right",
+        "displayTime": "2",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 1",
+        "name": "Action notification",
+        "x": 1110,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "40fb69dc.db77f",
+        "type": "ui_toast",
+        "z": "c684704d.a58f18",
+        "position": "top right",
+        "displayTime": "2",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Room 1",
+        "name": "Action notification",
+        "x": 1110,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "14e9a226.6cf06e",
+        "type": "ui_button",
+        "z": "c684704d.a58f18",
+        "name": "",
+        "group": "39678745.d49fd",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Ventilation ON",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=2",
+        "payloadType": "str",
+        "topic": "",
+        "x": 540,
+        "y": 460,
+        "wires": [
+            [
+                "397e6abe.d3d456",
+                "8df08a8a.d1d948",
+                "8ba162f7.8712a",
+                "e01eab00.88bfb8"
+            ]
+        ]
+    },
+    {
+        "id": "90db7bf9.dde6c8",
+        "type": "ui_button",
+        "z": "c684704d.a58f18",
+        "name": "",
+        "group": "39678745.d49fd",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Ventilation OFF",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "opt=7",
+        "payloadType": "str",
+        "topic": "",
+        "x": 560,
+        "y": 520,
+        "wires": [
+            [
+                "397e6abe.d3d456",
+                "8df08a8a.d1d948",
+                "8ba162f7.8712a",
+                "e01eab00.88bfb8"
+            ]
+        ]
+    },
+    {
+        "id": "341b3e24.a3eb5a",
+        "type": "ui_form",
+        "z": "8f036ae8.44e868",
+        "name": "",
+        "label": "Email address for allert",
+        "group": "b86c27e4.2dc43",
+        "order": 0,
+        "width": "8",
+        "height": "1",
+        "options": [
+            {
+                "label": "Email",
+                "value": "email",
+                "type": "text",
+                "required": true
+            }
+        ],
+        "formValue": {
+            "email": ""
+        },
+        "payload": "",
+        "submit": "Set email",
+        "cancel": "cancel",
+        "topic": "",
+        "x": 200,
+        "y": 720,
+        "wires": [
+            [
+                "7f33a676.522698"
+            ]
+        ]
+    },
+    {
+        "id": "7f33a676.522698",
+        "type": "function",
+        "z": "8f036ae8.44e868",
+        "name": "",
+        "func": "var chosen_email = global.get(\"Email\")\nif(chosen_email==undefined)\n{\n   global.set(\"Email\",msg.payload.email);\n}\nelse\n{\n    chosen_email=msg.payload.email;\n}\nmsg.payload=\"Address \"+chosen_email+\" correctly setted\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 720,
+        "wires": [
+            [
+                "de9dda39.4ecce"
+            ]
+        ]
+    },
+    {
+        "id": "de9dda39.4ecce",
+        "type": "ui_toast",
+        "z": "8f036ae8.44e868",
+        "position": "top right",
+        "displayTime": "2",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "",
+        "name": "",
+        "x": 830,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "6f57d8c.e5c50a8",
+        "type": "ui_form",
+        "z": "8f036ae8.44e868",
+        "name": "Form room 3",
+        "label": "",
+        "group": "deb74e0f.688798",
+        "order": 0,
+        "width": "6",
+        "height": "2",
+        "options": [
+            {
+                "label": "Low treshold",
+                "value": "l_tresh",
+                "type": "number",
+                "required": true
+            },
+            {
+                "label": "High treshold",
+                "value": "h_tresh",
+                "type": "number",
+                "required": true
+            }
+        ],
+        "formValue": {
+            "l_tresh": "",
+            "h_tresh": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "x": 210,
+        "y": 520,
+        "wires": [
+            [
+                "c588d156.17d0e"
+            ]
+        ]
+    },
+    {
+        "id": "189bb9c7.394206",
+        "type": "ui_form",
+        "z": "8f036ae8.44e868",
+        "name": "Form room 2",
+        "label": "",
+        "group": "305ee3f7.392b1c",
+        "order": 0,
+        "width": "6",
+        "height": "2",
+        "options": [
+            {
+                "label": "Low treshold",
+                "value": "l_tresh",
+                "type": "number",
+                "required": true
+            },
+            {
+                "label": "High treshold",
+                "value": "h_tresh",
+                "type": "number",
+                "required": true
+            }
+        ],
+        "formValue": {
+            "l_tresh": "",
+            "h_tresh": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "x": 210,
+        "y": 460,
+        "wires": [
+            [
+                "d5b43f4c.cd75e"
+            ]
+        ]
+    },
+    {
+        "id": "16c05ddc.762cca",
+        "type": "ui_form",
+        "z": "8f036ae8.44e868",
+        "name": "Form room 4",
+        "label": "",
+        "group": "754e3bcd.e553fc",
+        "order": 0,
+        "width": "6",
+        "height": "2",
+        "options": [
+            {
+                "label": "Low treshold",
+                "value": "l_tresh",
+                "type": "number",
+                "required": true
+            },
+            {
+                "label": "High treshold",
+                "value": "h_tresh",
+                "type": "number",
+                "required": true
+            }
+        ],
+        "formValue": {
+            "l_tresh": "",
+            "h_tresh": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "x": 210,
+        "y": 580,
+        "wires": [
+            [
+                "d912ed99.ae933"
+            ]
+        ]
+    },
+    {
+        "id": "293bcecc.800032",
+        "type": "function",
+        "z": "8f036ae8.44e868",
+        "name": "Allert creation",
+        "func": "var low=msg.payload.l_tresh;\nvar high=msg.payload.h_tresh;\nif(low<high)\n{\n    var enable=global.get(\"alert_room1_enabled\");\n    var h_tresh=global.get(\"alert_room1_high\");\n    var l_tresh=global.get(\"alert_room1_low\");\n    enable=true;\n    h_tresh=high;\n    l_tresh=low;\n    msg.payload=\"Alert created for Room 1\";\n}\nelse\n{\n    msg.payload(\"Impossible to create alert,low treshold must be lesser than high treshold\");\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 400,
+        "wires": [
+            [
+                "de9dda39.4ecce"
+            ]
+        ]
+    },
+    {
+        "id": "d5b43f4c.cd75e",
+        "type": "function",
+        "z": "8f036ae8.44e868",
+        "name": "Allert creation",
+        "func": "var low=msg.payload.l_tresh;\nvar high=msg.payload.h_tresh;\nif(low<high)\n{\n    var enable=global.get(\"alert_room2_enabled\");\n    var h_tresh=global.get(\"alert_room2_high\");\n    var l_tresh=global.get(\"alert_room2_low\");\n    enable=true;\n    h_tresh=high;\n    l_tresh=low;\n    msg.payload=\"Alert created for Room 2\";\n}\nelse\n{\n    msg.payload(\"Impossible to create alert,low treshold must be lesser than high treshold\");\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 460,
+        "y": 460,
+        "wires": [
+            [
+                "de9dda39.4ecce"
+            ]
+        ]
+    },
+    {
+        "id": "c588d156.17d0e",
+        "type": "function",
+        "z": "8f036ae8.44e868",
+        "name": "Allert creation",
+        "func": "var low=msg.payload.l_tresh;\nvar high=msg.payload.h_tresh;\nif(low<high)\n{\n    var enable=global.get(\"alert_room3_enabled\");\n    var h_tresh=global.get(\"alert_room3_high\");\n    var l_tresh=global.get(\"alert_room3_low\");\n    enable=true;\n    h_tresh=high;\n    l_tresh=low;\n    msg.payload=\"Alert created for Room 3\";\n}\nelse\n{\n    msg.payload(\"Impossible to create alert,low treshold must be lesser than high treshold\");\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 460,
+        "y": 520,
+        "wires": [
+            [
+                "de9dda39.4ecce"
+            ]
+        ]
+    },
+    {
+        "id": "d912ed99.ae933",
+        "type": "function",
+        "z": "8f036ae8.44e868",
+        "name": "Allert creation",
+        "func": "var low=msg.payload.l_tresh;\nvar high=msg.payload.h_tresh;\nif(low<high)\n{\n    var enable=global.get(\"alert_room4_enabled\");\n    var h_tresh=global.get(\"alert_room4_high\");\n    var l_tresh=global.get(\"alert_room4_low\");\n    enable=true;\n    h_tresh=high;\n    l_tresh=low;\n    msg.payload=\"Alert created for Room 4\";\n}\nelse\n{\n    msg.payload(\"Impossible to create alert,low treshold must be lesser than high treshold\");\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 460,
+        "y": 580,
+        "wires": [
+            [
+                "de9dda39.4ecce"
+            ]
+        ]
+    },
+    {
+        "id": "470d628b.0d1adc",
+        "type": "ui_form",
+        "z": "8f036ae8.44e868",
+        "name": "House",
+        "label": "",
+        "group": "23d99995.12cdbe",
+        "order": 0,
+        "width": "6",
+        "height": "2",
+        "options": [
+            {
+                "label": "Low treshold",
+                "value": "l_tresh",
+                "type": "number",
+                "required": true
+            },
+            {
+                "label": "High treshold",
+                "value": "h_tresh",
+                "type": "number",
+                "required": true
+            }
+        ],
+        "formValue": {
+            "l_tresh": "",
+            "h_tresh": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "x": 190,
+        "y": 640,
+        "wires": [
+            [
+                "5174132a.596e04"
+            ]
+        ]
+    },
+    {
+        "id": "5174132a.596e04",
+        "type": "function",
+        "z": "8f036ae8.44e868",
+        "name": "Allert creation",
+        "func": "var low=msg.payload.l_tresh;\nvar high=msg.payload.h_tresh;\nif(low<high)\n{\n    var enable=global.get(\"alert_house_enabled\");\n    var h_tresh=global.get(\"alert_house_high\");\n    var l_tresh=global.get(\"alert_house_low\");\n    enable=true;\n    h_tresh=high;\n    l_tresh=low;\n    msg.payload=\"Alert created for house\";\n}\nelse\n{\n    msg.payload(\"Impossible to create alert,low treshold must be lesser than high treshold\");\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 460,
+        "y": 640,
+        "wires": [
+            [
+                "de9dda39.4ecce"
+            ]
+        ]
+    },
+    {
+        "id": "a2989de1.4e8078",
+        "type": "function",
+        "z": "43474f.080cd0b",
+        "name": "Trigger email",
+        "func": "var alert_sent=flow.get(\"alert_sent\");\nvar alert_enabled=global.get(\"alert_room1_enabled\");\nvar low=global.get(\"alert_room1_low\");\nvar high=global.get(\"alert_room1_high\");\nvar temp=parseInt(msg.payload);\nmsg.payload=0;\nif(alert_enabled)\n{\n  if(temp<low || temp>high) \n  {\n    if(!alert_sent)\n        msg.payload={send:1,temperature:temp};\n    \n    alert_sent=true;\n  }\n  else\n    alert_sent=false;\n}\nelse\n{\n    alert_sent=false;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 690,
+        "y": 60,
+        "wires": [
+            [
+                "c37f5301.d4349"
+            ]
+        ]
+    },
+    {
+        "id": "4fc88f3c.1865c",
+        "type": "function",
+        "z": "43474f.080cd0b",
+        "name": "flow variable ",
+        "func": "flow.set(\"alert_sent\",false);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 440,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "488074b2.825144",
+        "type": "function",
+        "z": "d8902723.e69f98",
+        "name": "flow variable ",
+        "func": "flow.set(\"alert_sent\",false);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d3090295.02f138",
+        "type": "function",
+        "z": "fdef468.f476d38",
+        "name": "flow variable ",
+        "func": "flow.set(\"alert_sent\",false);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "463fa1a7.fa7978",
+        "type": "function",
+        "z": "1be7f76b.adffe9",
+        "name": "flow variable ",
+        "func": "flow.set(\"alert_sent\",false);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c37f5301.d4349",
+        "type": "switch",
+        "z": "43474f.080cd0b",
+        "name": "",
+        "property": "payload.send",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 880,
+        "y": 60,
+        "wires": [
+            [
+                "7e81ae86.b4d4e"
+            ]
+        ]
+    },
+    {
+        "id": "2ce5c71.1214ab8",
+        "type": "e-mail",
+        "z": "43474f.080cd0b",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": false,
+        "name": "",
+        "dname": "",
+        "x": 1270,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "7e81ae86.b4d4e",
+        "type": "function",
+        "z": "43474f.080cd0b",
+        "name": "email composition",
+        "func": "msg.payload=\"Room 1 temperature is \"+msg.payload.temperature;\nmsg.to=global.get(\"Email\");\nmsg.topic=\"Smart thermostat alert: Room 1\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1050,
+        "y": 120,
+        "wires": [
+            [
+                "2ce5c71.1214ab8"
+            ]
+        ]
+    },
+    {
+        "id": "68074927.871ac",
+        "type": "function",
+        "z": "d8902723.e69f98",
+        "name": "Trigger email",
+        "func": "var alert_sent=flow.get(\"alert_sent\");\nvar alert_enabled=global.get(\"alert_room2_enabled\");\nvar low=global.get(\"alert_room2_low\");\nvar high=global.get(\"alert_room2_high\");\nvar temp=parseInt(msg.payload);\nmsg.payload=0;\nif(alert_enabled)\n{\n  if(temp<low || temp>high) \n  {\n    if(!alert_sent)\n        msg.payload={send:1,temperature:temp};\n    \n    alert_sent=true;\n  }\n  else\n    alert_sent=false;\n}\nelse\n{\n    alert_sent=false;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 810,
+        "y": 40,
+        "wires": [
+            [
+                "e2812444.3d5788"
+            ]
+        ]
+    },
+    {
+        "id": "e2812444.3d5788",
+        "type": "switch",
+        "z": "d8902723.e69f98",
+        "name": "",
+        "property": "payload.send",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1000,
+        "y": 40,
+        "wires": [
+            [
+                "378ad1c.7c94fae"
+            ]
+        ]
+    },
+    {
+        "id": "378ad1c.7c94fae",
+        "type": "function",
+        "z": "d8902723.e69f98",
+        "name": "email composition",
+        "func": "msg.payload=\"Room 2 temperature is \"+msg.payload.temperature;\nmsg.to=global.get(\"Email\");\nmsg.topic=\"Smart thermostat allert: Room 2\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1170,
+        "y": 100,
+        "wires": [
+            [
+                "8b979713.aad01"
+            ]
+        ]
+    },
+    {
+        "id": "8b979713.aad01",
+        "type": "e-mail",
+        "z": "d8902723.e69f98",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": false,
+        "name": "",
+        "dname": "",
+        "x": 1390,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "7a917613.28d738",
+        "type": "function",
+        "z": "fdef468.f476d38",
+        "name": "Trigger email",
+        "func": "var alert_sent=flow.get(\"alert_sent\");\nvar alert_enabled=global.get(\"alert_room3_enabled\");\nvar low=global.get(\"alert_room3_low\");\nvar high=global.get(\"alert_room3_high\");\nvar temp=parseInt(msg.payload);\nmsg.payload=0;\nif(alert_enabled)\n{\n  if(temp<low || temp>high) \n  {\n    if(!alert_sent)\n        msg.payload={send:1,temperature:temp};\n    \n    alert_sent=true;\n  }\n  else\n    alert_sent=false;\n}\nelse\n{\n    alert_sent=false;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 20,
+        "wires": [
+            [
+                "67a0e4fe.3967a4"
+            ]
+        ]
+    },
+    {
+        "id": "67a0e4fe.3967a4",
+        "type": "switch",
+        "z": "fdef468.f476d38",
+        "name": "",
+        "property": "payload.send",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 980,
+        "y": 40,
+        "wires": [
+            [
+                "210f8e4f.2b4e1a"
+            ]
+        ]
+    },
+    {
+        "id": "210f8e4f.2b4e1a",
+        "type": "function",
+        "z": "fdef468.f476d38",
+        "name": "email composition",
+        "func": "msg.payload=\"Room 3 temperature is \"+msg.payload.temperature;\nmsg.to=global.get(\"Email\");\nmsg.topic=\"Smart thermostat alert: Room 3\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1150,
+        "y": 100,
+        "wires": [
+            [
+                "3b0278b1.8ac1e"
+            ]
+        ]
+    },
+    {
+        "id": "3b0278b1.8ac1e",
+        "type": "e-mail",
+        "z": "fdef468.f476d38",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": false,
+        "name": "",
+        "dname": "",
+        "x": 1370,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "b0e540a7.91c62",
+        "type": "function",
+        "z": "1be7f76b.adffe9",
+        "name": "Trigger email",
+        "func": "var alert_sent=flow.get(\"alert_sent\");\nvar alert_enabled=global.get(\"alert_room4_enabled\");\nvar low=global.get(\"alert_room4_low\");\nvar high=global.get(\"alert_room4_high\");\nvar temp=parseInt(msg.payload);\nmsg.payload=0;\nif(alert_enabled)\n{\n  if(temp<low || temp>high) \n  {\n    if(!alert_sent)\n        msg.payload={send:1,temperature:temp};\n    \n    alert_sent=true;\n  }\n  else\n    alert_sent=false;\n}\nelse\n{\n    alert_sent=false;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 870,
+        "y": 40,
+        "wires": [
+            [
+                "4e58b46b.83351c"
+            ]
+        ]
+    },
+    {
+        "id": "4e58b46b.83351c",
+        "type": "switch",
+        "z": "1be7f76b.adffe9",
+        "name": "",
+        "property": "payload.send",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1060,
+        "y": 40,
+        "wires": [
+            [
+                "9e5110b6.7b7c48"
+            ]
+        ]
+    },
+    {
+        "id": "9e5110b6.7b7c48",
+        "type": "function",
+        "z": "1be7f76b.adffe9",
+        "name": "email composition",
+        "func": "msg.payload=\"Room 4 temperature is \"+msg.payload.temperature;\nmsg.to=global.get(\"Email\");\nmsg.topic=\"Smart thermostat alert: Room 4\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1230,
+        "y": 100,
+        "wires": [
+            [
+                "d0f373bf.239f6"
+            ]
+        ]
+    },
+    {
+        "id": "d0f373bf.239f6",
+        "type": "e-mail",
+        "z": "1be7f76b.adffe9",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": false,
+        "name": "",
+        "dname": "",
+        "x": 1450,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "62e4e007.52ed28",
+        "type": "function",
+        "z": "c684704d.a58f18",
+        "name": "Trigger email",
+        "func": "var alert_sent=flow.get(\"alert_sent\");\nvar alert_enabled=global.get(\"alert_house_enabled\");\nvar low=global.get(\"alert_house_low\");\nvar high=global.get(\"alert_house_high\");\nvar temp=parseInt(msg.payload);\nmsg.payload=0;\nif(alert_enabled)\n{\n  if(temp<low || temp>high) \n  {\n    if(!alert_sent)\n        msg.payload={send:1,temperature:temp};\n    \n    alert_sent=true;\n  }\n  else\n    alert_sent=false;\n}\nelse\n{\n    alert_sent=false;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 790,
+        "y": 40,
+        "wires": [
+            [
+                "8ea0d357.7e443"
+            ]
+        ]
+    },
+    {
+        "id": "8ea0d357.7e443",
+        "type": "switch",
+        "z": "c684704d.a58f18",
+        "name": "",
+        "property": "payload.send",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 980,
+        "y": 40,
+        "wires": [
+            [
+                "d5d5f7ff.e810f"
+            ]
+        ]
+    },
+    {
+        "id": "d5d5f7ff.e810f",
+        "type": "function",
+        "z": "c684704d.a58f18",
+        "name": "email composition",
+        "func": "msg.payload=\"House average temperature is \"+msg.temp;\nmsg.to=global.get(\"Email\");\nmsg.topic=\"Smart thermostat allert: Room 1\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1150,
+        "y": 100,
+        "wires": [
+            [
+                "28ac72e9.3108f6"
+            ]
+        ]
+    },
+    {
+        "id": "28ac72e9.3108f6",
+        "type": "e-mail",
+        "z": "c684704d.a58f18",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": false,
+        "name": "",
+        "dname": "",
+        "x": 1370,
+        "y": 20,
+        "wires": []
+    }
+]
