@@ -11,7 +11,7 @@
 #include "dev/leds.h"
 
 #define SENDING_PERIOD 5
-#define TEMPERATURE_PERIOD 5
+#define TEMPERATURE_PERIOD 20
 
 static int16_t temperature;
 
