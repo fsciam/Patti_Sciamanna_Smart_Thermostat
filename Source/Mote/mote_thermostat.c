@@ -11,7 +11,7 @@
 #include "dev/leds.h"
 
 #define SENDING_PERIOD 5
-#define TEMPERATURE_PERIOD 3
+#define TEMPERATURE_PERIOD 5
 
 static int16_t temperature;
 
@@ -49,40 +49,40 @@ heating_opt_handler(void* request, void* response, uint8_t *buffer, uint16_t pre
 		int option_selected;
 		int success=0;
 		int status=0;
-	 	
 	 	REST.get_post_variable(request, "opt", &opt);
 	 	option_selected=atoi(opt);
 		REST.set_header_content_type(response, REST.type.APPLICATION_JSON);
 	
-		printf("Received request for option: %d\n",option_selected);
 	
-	
-	
-	
-			
-			
-			
-			
 		if(option_selected == 0 || option_selected == 3 || option_selected == 4)
 		{
 				if(!heating_unit || option_selected == 3 || option_selected == 4 )
 				{
 					if(option_selected == 0)
+					{
+						printf("Change air c state\n");
 						air_conditioning=air_conditioning? 0 : 1;
+					}
 					else if(option_selected == 3)
 					{
+						printf("Air c ON master req\n");
 						air_conditioning=1;
 						heating_unit=0;
 					}
 					else
 					{
+						printf("Air c OFF master req\n");
 						air_conditioning=0;
 						heating_unit=0;
 					}
-					printf("Air conditioning: %d\n",air_conditioning);
+					printf("Air c %d\n",air_conditioning);
 				
 					success=1;
 					status=air_conditioning;
+				}
+				else
+				{
+					printf("ERR heater must be OFF\n");
 				}
 			
 
@@ -93,33 +93,51 @@ heating_opt_handler(void* request, void* response, uint8_t *buffer, uint16_t pre
 				if(!air_conditioning || option_selected == 5 || option_selected == 6)
 				{
 					if(option_selected == 1)
+					{
 						heating_unit=heating_unit? 0 : 1;
+						printf("Change heater state\n");
+					}
 					else if(option_selected == 5)
 					{
+						printf("Heater ON master req\n");
 						heating_unit=1;
 						air_conditioning=0;
 					}
 					else
 					{
+						printf("Heater OFF master req\n");
 						heating_unit=0;
 						air_conditioning=0;
 					}
-					printf("Heating unit: %d\n",heating_unit);
+					printf("Heat %d\n",heating_unit);
 				
 					success=1;
 					status=heating_unit;
+				}
+				else
+				{
+					printf("ERR air cond must be OFF\n");
 				}
 			
 		}
 		else if(option_selected == 2 || option_selected == 7 || option_selected == 8)
 		{
 				if(option_selected == 7)
+				{
+					printf("Vent ON master req\n");
 					ventilation_unit=1;
+				}
 				else if(option_selected == 8)
+				{
+					printf("Vent OFF master req\n");
 					ventilation_unit=0;
+				}
 				else
+				{
 					ventilation_unit=ventilation_unit? 0: 1;
-				printf("Ventilation unit: %d\n",ventilation_unit);
+					printf("Change vent state\n");
+				}
+				printf("Vent %d\n",ventilation_unit);
 				
 				success=1;
 				status=ventilation_unit;
@@ -230,7 +248,7 @@ PROCESS_THREAD(thermostat, ev, data)
   /*Initialize temperature, we tried to generate random numbers but, even if we've tried lot of algos,
   cooja simulation generate always the same set of numbers*/ 
   temperature=10+random_at_most(20);
-  printf("Initialize temperature to %d Celsius degrees\n",temperature);
+  printf("Init temp %d°C\n",temperature);
 	
 	/* set timer to expire after TEMPERATURE_PERIOD seconds to allow temperature simulation */
   etimer_set(&et, CLOCK_SECOND * TEMPERATURE_PERIOD);
@@ -254,7 +272,7 @@ PROCESS_THREAD(thermostat, ev, data)
 				{
 					temperature+=ventilation_unit? 2 : 1;
 				}
-				printf("Temperature: %d\n",temperature);
+				printf("Temp %d\n",temperature);
 				etimer_restart(&et);
 			}
     }
