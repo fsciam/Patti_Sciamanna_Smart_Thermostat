@@ -161,7 +161,7 @@
   <plugin>
     org.contikios.cooja.plugins.SimControl
     <width>280</width>
-    <z>0</z>
+    <z>1</z>
     <height>160</height>
     <location_x>400</location_x>
     <location_y>0</location_y>
@@ -174,10 +174,10 @@
       <skin>org.contikios.cooja.plugins.skins.GridVisualizerSkin</skin>
       <skin>org.contikios.cooja.plugins.skins.TrafficVisualizerSkin</skin>
       <skin>org.contikios.cooja.plugins.skins.UDGMVisualizerSkin</skin>
-      <viewport>0.7977182450902891 0.0 0.0 0.7977182450902891 254.5783461611842 193.39173715997575</viewport>
+      <viewport>0.5539710035349231 0.0 0.0 0.5539710035349231 153.249825696041 145.9420094340684</viewport>
     </plugin_config>
     <width>400</width>
-    <z>2</z>
+    <z>4</z>
     <height>400</height>
     <location_x>1</location_x>
     <location_y>1</location_y>
@@ -190,8 +190,8 @@
       <coloring />
     </plugin_config>
     <width>1320</width>
-    <z>5</z>
-    <height>238</height>
+    <z>0</z>
+    <height>267</height>
     <location_x>400</location_x>
     <location_y>160</location_y>
   </plugin>
@@ -260,7 +260,7 @@
       <scrollpos>0,0</scrollpos>
     </plugin_config>
     <width>350</width>
-    <z>4</z>
+    <z>5</z>
     <height>300</height>
     <location_x>405</location_x>
     <location_y>433</location_y>
@@ -273,7 +273,7 @@
       <scrollpos>0,0</scrollpos>
     </plugin_config>
     <width>350</width>
-    <z>3</z>
+    <z>2</z>
     <height>300</height>
     <location_x>791</location_x>
     <location_y>432</location_y>
@@ -286,7 +286,7 @@
       <scrollpos>0,0</scrollpos>
     </plugin_config>
     <width>350</width>
-    <z>1</z>
+    <z>3</z>
     <height>300</height>
     <location_x>1188</location_x>
     <location_y>432</location_y>

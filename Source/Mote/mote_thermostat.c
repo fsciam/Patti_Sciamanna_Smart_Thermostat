@@ -229,8 +229,8 @@ PROCESS_THREAD(thermostat, ev, data)
 	
   PROCESS_BEGIN();
   
-  /*Initialize temperature, not a uniform distribution*/
-  	   
+  /*Initialize temperature, we tried to generate random numbers but, even if we've tried lot of algos,
+  cooja simulation generate always the same set of numbers*/ 
   temperature=10+random_at_most(20);
   printf("Initialize temperature to %d Celsius degrees\n",temperature);
 
