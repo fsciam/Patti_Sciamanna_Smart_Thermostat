@@ -1,0 +1,43 @@
+%============================================================================
+\documentclass[letterpaper, 11pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{fullpage} % changes the margin
+\usepackage{graphicx} % allows insertion of images
+\usepackage{textcomp}
+
+% tight center environment
+\newenvironment{tightcenter}{\setlength\topsep{0pt}\setlength\parskip{0pt}
+  \begin{center}
+}{%
+  \end{center}
+}
+
+%Custom Commands
+\newcommand{\hl}{\begin{center} \line(1,0){468} \end{center}} % lines
+\newcommand{\ctitle}[1]{\begin{center} \huge{\textbf{#1}} \end{center}} % custom title
+
+%============================================================================
+
+
+\begin{document}
+
+%Header 
+\noindent
+Internet of Things \hfill  Patti Alberto - 895416\\
+Project Report\hfill Sciamanna Filippo - 000000
+
+%Title
+
+\ctitle{Smart Thermostat}
+
+
+\hl
+\section*{Project description and requirements}
+\input{Sections/Description} 
+
+\hl 
+
+\section*{Development}
+\input{Sections/Development} 
+
+\end{document}

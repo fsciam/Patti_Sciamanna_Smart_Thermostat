@@ -73,7 +73,6 @@ heating_opt_handler(void* request, void* response, uint8_t *buffer, uint16_t pre
 					{
 						printf("Air c OFF master req\n");
 						air_conditioning=0;
-						heating_unit=0;
 					}
 					printf("Air c %d\n",air_conditioning);
 				
@@ -107,7 +106,6 @@ heating_opt_handler(void* request, void* response, uint8_t *buffer, uint16_t pre
 					{
 						printf("Heater OFF master req\n");
 						heating_unit=0;
-						air_conditioning=0;
 					}
 					printf("Heat %d\n",heating_unit);
 				
