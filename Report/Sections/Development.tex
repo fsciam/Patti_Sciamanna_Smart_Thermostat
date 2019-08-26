@@ -19,7 +19,7 @@ The simulation of the temperature is simply done by using a timeout (20 seconds)
 \begin{itemize}
 	\item +1\textdegree C if the heating is active;
 	\item -1\textdegree C if the air conditioning is active;
-	\item x2 multiplier of the current status.
+	\item x2 multiplier if the ventilation unit is active.
 \end{itemize} 
 In order to avoid reaching unreasonable values it was decided to keep the temperature in the range [0\textdegree C, 50\textdegree C].\\
 The communication with the user is implemented using the CoAP protocol by defining two resources:
@@ -47,7 +47,14 @@ The temperature resources is related to the value of the temperature read by the
 \subsection*{Node-RED}
 Node-RED allows the user to see and interact with the sensor network by connecting to the border router and sending CoAP request. In order to keep everything easier to understand, it was decided to take advantage of the possibility to put everything in multiple flows.
 \subsubsection*{Room flows}
-For each "room" there is a flow where an OBSERVE request on the temperature resource is sent to the corresponding node in order to start receiving the values. Every value received is  stored in the room specific global variable as it is needed to calculate the average values requested in the project specification. Each room also offers the possibility to  send a POST request in order to change the status of the heating devices. These requests use the \{0, 1, 2\} values for the "opt" parameter.
+For each "room" there is a flow where an OBSERVE request on the temperature resource is sent to the corresponding node in order to start receiving the values. Every value received is  stored in the room specific global array variable (needed to calculate the average values) and displayed on a gauge. Each room offers the possibility to  send a POST request in order to change the status of the heating devices. These requests use the \{0, 1, 2\} values for the "opt" parameter. 
+The status of the room is visible in two ways:
+\begin{enumerate}
+	\setcounter{enumi}{0}
+	\item through the color of the buttons(grey buttons indicate that the corresponding services are off)
+	\item through the stats button, a GET request is sent and the result is displayed as text.
+\end{enumerate}
+
 \subsubsection*{House flow}
 The house flow simply evaluate the average temperature in the house by periodically taking the last value received by the sensor of each room. The obtained value is then stored in a global variable. There is also the possibility to send POST requests to all the nodes in order to decide the overall behavior of the heating devices by using the value \{3, 4, 5, 6, 7, 8\} for the "opt" parameter.
 
@@ -56,6 +63,6 @@ The settings flow defines multiple forms that allow the user to set the paramete
 
 \subsubsection*{Average flow}
 The average flow is tasked with the evaluation of the average temperature of each room and the house over one minute by taking the values from the global variable set in the previous flows.\\
-The average of the house is immediately displayed on the dashboard and published to a Thingspeak channel while the average of each room are just published to the corresponding field in the Thingspeak channel. These values are retrieved by subscribing to the same Thingspeak channel and then it is displayed.\\
+The average of the house is immediately displayed on the dashboard and published to a Thingspeak channel while the average of each room are just published to the corresponding field in the Thingspeak channel. These values are retrieved by subscribing to the same Thingspeak channel and then displayed.\\
 The average value are checked (the house average is checked immediately while the room average values are checked after retrieving them through MQTT) to see whether they are in the range set for the alarm and eventually a email is sent.
 
