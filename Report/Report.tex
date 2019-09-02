@@ -40,10 +40,14 @@ Project Report\hfill Sciamanna Filippo - 898515
 \section*{Development}
 \input{Sections/Development} 
 
-\section*{Problems encountered}
-During the development of the project, only one major problem arose:\\
-the MQTT subscribe node wasn't able to connect to the channel on one of the machine where the project was tested while the publish nodes work correctly on both. This is probably related to a problem regarding the ThingSpeak MQTT broker.\\
-The video was taken on the machine that didn't show this issue to show that the application works correctly.
+\section*{Node-RED import problems}
+Node-RED does not allow us to export some node settings and for that reason some features may not completely work. 
+To make our project work you have to: 
+\begin{enumerate}
+	\setcounter{enumi}{0}
+	\item Set all email nodes user id to "smart.thermostat.iot.2019@gmail.com" and password to "IoT2019Af".
+	\item Open the MQTT subscribe node and make sure that in the "thingspeak-subscribe" server settings the password is set to: P34OKQ312G55D98D.
+\end{enumerate}
 
 
 \end{document}
